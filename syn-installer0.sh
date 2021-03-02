@@ -24,9 +24,3 @@ echo Setting Up Mirrorlist On SYN-ARCHSO Using reflector Then pacstrap All Packa
 
 echo Generate filesystem table with boot information in respect to UUID assignment 
     genfstab -U /mnt >> /mnt/etc/fstab
-    
-echo Create SYNSTALL profile template on new system
-    mkdir /mnt/root/SYNSTALL
-    cp -r /root/SYNSTALL /mnt/root/SYNSTALL
-        
-
