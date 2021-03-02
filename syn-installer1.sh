@@ -2,8 +2,8 @@
 # Assumption - chroot into /mnt after script 0
 #################################################################
 # Main script variables                                         #
-DEFAULT_USER990=xibo                                       #
-FINAL_HOSTNAME990=xibo-testbuild                                        #
+DEFAULT_USER990=syntax990                                       #
+FINAL_HOSTNAME990=SYN-TESTBUILD                                 #
 #################################################################
 
 echo Setting Username Variable
@@ -66,13 +66,3 @@ echo systemctl enable iwd.service       && systemctl enable iwd.service
 #       #systemd-boot (gpt / uefi)
 echo Using systemd-boot on /boot/
         bootctl --path=/boot install
-        
-echo AUR package cramming
-git clone https://aur.archlinux.org/veyon.git # Download Veyon Source
-git clone https://aur.archlinux.org/snapd.git # Download Snapd Source
-                #       ^       #
-#                     !!!!                    # HUMAN REQUIRE FOR makepkg -si IN EACH DIR
-#sudo systemctl enable --now snapd.socket
-#sudo ln -s /var/lib/snapd/snap /snap
-#sudo snap install xibo-player
-
