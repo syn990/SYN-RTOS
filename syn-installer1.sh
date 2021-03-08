@@ -1,33 +1,29 @@
 #!/bin/sh
 # Assumption - chroot into /mnt after script 0
-#################################################################
-# Main script variables                                         #
-DEFAULT_USER990=syntax990                                       #
-FINAL_HOSTNAME990=SYN-TESTBUILD                                 #
-#################################################################
 
-echo Setting Username Variable
-echo Setting Hostname Variable
-echo Setting Hardware Clock
-echo Updating Package List Using Optimized Mirror
+# Main script variables                                         
+DEFAULT_USER990=syntax990
+FINAL_HOSTNAME990=SYN-TESTBUILD
+
+
+echo Setting username
+echo Setting hostname
+echo Setting hardware Clock
+echo Updating package list using optimized mirror
 
     hwclock --systohc           # Run hwclock to generate /etc/adjtime
     pacman -Syy && reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
     
 echo Generating /etc/locale.gen with LANG=en_GB.UTF-8
-
-        rm /etc/locale.gen         &&       touch /etc/locale.gen
-        echo 'en_GB.UTF-8 UTF-8'   >>             /etc/locale.gen
-        
-    locale-gen
-
 echo Generating Various System Variables
-echo Adding $FINAL_HOSTNAME990 to /etc/hostname
 
-        touch /etc/locale.conf      && echo 'LANG=en_GB.UTF-8' >> /etc/locale.conf
-        touch /etc/vconsole.conf    && echo 'KEYMAP=uk' >> /etc/vconsole.conf
-        touch /etc/hostname         && echo $FINAL_HOSTNAME990 >> /etc/hostname
-        touch /etc/issue            && echo 'XIBO Syntax990 RTOS (arch) \r (\l)' >> /etc/issue
+    rm /etc/locale.gen
+    touch /etc/locale.gen       && echo 'en_GB.UTF-8 UTF-8'                     >> /etc/locale.gen
+    locale-gen
+    touch /etc/locale.conf      && echo 'LANG=en_GB.UTF-8'                      >> /etc/locale.conf
+    touch /etc/vconsole.conf    && echo 'KEYMAP=uk'                             >> /etc/vconsole.conf
+    touch /etc/hostname         && echo $FINAL_HOSTNAME990                      >> /etc/hostname
+    touch /etc/issue            && echo 'XIBO Syntax990 RTOS (arch) \r (\l)'    >> /etc/issue
 
 echo Forced Manual-Editi of sudoer file
 
@@ -52,17 +48,6 @@ echo Correct Permissions For $DEFAULT_USER990
             cp /root/SYNSTALL/DEFAULT_USER/.zshrc           /home/$DEFAULT_USER990/.zshrc
       chown    $DEFAULT_USER990:$DEFAULT_USER990    -r      /home/$DEFAULT_USER990
         
-echo Enabling Services:
-echo systemctl enable dhcpcd.service    && systemctl enable dhcpcd.service
-echo systemctl enable iwd.service       && systemctl enable iwd.service
-    
-#Install bootloader
-
-#       #SYSLINUX (mbr)
-#       mkdir /boot/syslinux/                #create dummy folder
-#       syslinux-install_update -i -a -m     #install syslinux to mbr
-#       nano /boot/syslinux/syslinux.cfg     #force manual correction of syslinux sda1 parameter
-#
-#       #systemd-boot (gpt / uefi)
-echo Using systemd-boot on /boot/
-        bootctl --path=/boot install
+echo Enabling DHCP client on boot               && systemctl enable dhcpcd.service
+echo Enabling Wireless daemon on boot           && systemctl enable iwd.service    
+echo BOOT-PARAMATER systemd-boot on boot        && bootctl --path=/boot install
