@@ -12,7 +12,8 @@ echo Going completley nuclear and erasing disks with GPT partition and root part
     parted --script /dev/sda mkpart primary ext4 201Mib 100%
         mkfs.vfat /dev/sda1
         mkfs.ext4 /dev/sda2
-            mount /dev/sda2 /mnt && mkdir /mnt/boot/
+            mount /dev/sda2 /mnt
+            mkdir /mnt/boot/
             mount /dev/sda1 /mnt/boot
  
 echo Setting Up Mirrorlist On SYN-ARCHSO Using reflector Then pacstrap All Packages To New System partition
