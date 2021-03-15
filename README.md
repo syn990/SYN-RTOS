@@ -7,4 +7,5 @@ Currently there are two scripts:
 - syn-installer1.sh # part two
 
 Part one can be run so long as the machine has internet access
+
 Part two can be run assuming you use "arch-chroot /mnt" and can run the scripts from within a chroot.
