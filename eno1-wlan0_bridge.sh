@@ -5,11 +5,13 @@
 # Change these variables to suit interfaces that were detected on boot.
 WIRELESS_INTERFACE990=wlan0
 ETHERNET_INTERFACE990=eno1
+IP_ADDRESS990=139.96.30.100/24
+BROADCAST_ADDRESS990=139.96.30.0/24
 
 
 #Bring up Ethernet port
 ip link set up dev $ETHERNET_INTERFACE990
-ip addr add 139.96.30.100/24 dev $ETHERNET_INTERFACE990
+ip addr add $IP_ADDRESS990 dev $ETHERNET_INTERFACE990
 
 #Enable Packet Forwarding in Kernel
 sysctl net.ipv4.ip_forward=1
@@ -21,8 +23,8 @@ iptables -A FORWARD -i $ETHERNET_INTERFACE990 -o $WIRELESS_INTERFACE990 -j ACCEP
 
 #DHCP firewall rules Ethernet to WiFi 
 iptables -I INPUT -p udp --dport 67 -i net0 -j ACCEPT
-iptables -I INPUT -p udp --dport 53 -s 139.96.30.0/24 -j ACCEPT
-iptables -I INPUT -p tcp --dport 53 -s 139.96.30.0/24 -j ACCEPT
+iptables -I INPUT -p udp --dport 53 -s $BROADCAST_ADDRESS990 -j ACCEPT
+iptables -I INPUT -p tcp --dport 53 -s $BROADCAST_ADDRESS990 -j ACCEPT
 
 #Enable DHCP SERVER on ETHERNET
 systemctl start dhcpd4@$ETHERNET_INTERFACE990.service 
