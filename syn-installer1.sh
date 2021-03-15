@@ -51,3 +51,7 @@ echo Correct Permissions For $DEFAULT_USER990
 echo Enabling DHCP client on boot               && systemctl enable dhcpcd.service
 echo Enabling Wireless daemon on boot           && systemctl enable iwd.service    
 echo BOOT-PARAMATER systemd-boot on boot        && bootctl --path=/boot install
+#loader.conf and arch.conf are missing instructions here thus system will fail to boot
+#these files either need to be sourced so they can be copied across.
+#in fact... the whole thing looks like a mess again and needs some formal structure.
+#otherwise nobody will understand how to interact with this janky script....
