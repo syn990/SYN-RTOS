@@ -23,7 +23,7 @@ echo Generating Various System Variables
     touch /etc/locale.conf      && echo 'LANG=en_GB.UTF-8'                      >> /etc/locale.conf
     touch /etc/vconsole.conf    && echo 'KEYMAP=uk'                             >> /etc/vconsole.conf
     touch /etc/hostname         && echo $FINAL_HOSTNAME990                      >> /etc/hostname
-    touch /etc/issue            && echo 'XIBO Syntax990 RTOS (arch) \r (\l)'    >> /etc/issue
+    touch /etc/issue            && echo 'Syntax990 RTOS (arch) \r (\l)'    >> /etc/issue
 
 echo Forced Manual-Editi of sudoer file
 
