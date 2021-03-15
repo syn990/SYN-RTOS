@@ -8,14 +8,17 @@ Currently there are two main scripts: (these will later be merged into a single 
 
 The folders included are currenty not required at all for SYN-RTOS.
 
-- network_scripts ~ Some network related scripts
+# /network_scripts
+Some network related scripts
 
--- eno1-wlan0_bridge.sh # will provide an ethernet port with a route to the internet. 
+- eno1-wlan0_bridge.sh # will provide an ethernet port with a route to the internet. 
+- ip-configure.sh # which will set an IP if you can't use DHCP and are lazy.
 
--- ip-configure.sh # which will set an IP if you can't use DHCP and are lazy.
-
-- xibo-related ~ Archiso files used for an automated Digital-signage player. 
-
-It's possible once the main and future xibo branches are complete it will provide a basic framework for creating other meta-distrobutions
+# /xibo-related
+Archiso files used for an automated Digital-signage player. It's possible once the main and future xibo branches are complete these script will: 
+- Be simple to clone the main branch to make changes to the installer script before running it.
+- Have a clear folder structure so copying configuration files is easier to intergrate into the script.
+- Have more variation in the deployment tasks being crafted.
+- Provide a basic framework for creating other meta-distrobutions
  
 
