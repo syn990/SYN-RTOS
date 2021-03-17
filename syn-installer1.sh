@@ -14,7 +14,6 @@ echo Updating package list using optimized mirror
     hwclock --systohc           # Run hwclock to generate /etc/adjtime
     pacman -Syy && reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
     
-echo Generating /etc/locale.gen with LANG=en_GB.UTF-8
 echo Generating Various System Variables
 
     rm /etc/locale.gen
