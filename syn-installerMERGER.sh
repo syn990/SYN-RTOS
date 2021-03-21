@@ -60,24 +60,23 @@ FINAL_HOSTNAME990=SYN-TESTBUILD
             arch-chroot /mnt    "touch /etc/issue            && echo 'Syntax990 RTOS (arch) \r (\l)'         >> /etc/issue"
             arch-chroot /mnt echo Forced Manual-Editi of sudoer file
             arch-chroot /mnt EDITOR=nano visudo
-            arch-chroot /mnt "echo Create $DEFAULT_USER990"
-            arch-chroot /mnt "echo Create $DEFAULT_USER990 Home Directory"
-            arch-chroot /mnt "echo Add $DEFAULT_USER990 To Wheel Group And Set Password"
-            arch-chroot /mnt "echo Force Password Reset For $DEFAULT_USER990"
-            arch-chroot /mnt "echo Copy Scripts To $DEFAULT_USER990 Account"
-            arch-chroot /mnt "echo Correct Permissions For $DEFAULT_USER990"
-            arch-chroot /mnt "useradd -m -G wheel -s /bin/zsh $DEFAULT_USER990"
+            arch-chroot /mnt echo Create $DEFAULT_USER990
+            arch-chroot /mnt echo Create $DEFAULT_USER990 Home Directory
+            arch-chroot /mnt echo Add $DEFAULT_USER990 To Wheel Group And Set Password
+            arch-chroot /mnt echo Force Password Reset For $DEFAULT_USER990
+            arch-chroot /mnt echo Copy Scripts To $DEFAULT_USER990 Account
+            arch-chroot /mnt echo Correct Permissions For $DEFAULT_USER990
+            arch-chroot /mnt useradd -m -G wheel -s /bin/zsh $DEFAULT_USER990
             arch-chroot /mnt passwd $DEFAULT_USER990
             arch-chroot /mnt mkdir /home/$DEFAULT_USER990/SYNSTALL
             arch-chroot /mnt mkdir /home/$DEFAULT_USER990/.config
             arch-chroot /mnt mkdir /home/$DEFAULT_USER990/.local
-            arch-chroot /mnt "cp -r /root/SYNSTALL/scripts                    /home/$DEFAULT_USER990/SYNSTALL"
-            arch-chroot /mnt "cp -r /root/SYNSTALL/DEFAULT_USER/.config       /home/$DEFAULT_USER990/.config"
-            arch-chroot /mnt "cp -r /root/SYNSTALL/DEFAULT_USER/.local        /home/$DEFAULT_USER990/.local"
-            arch-chroot /mnt "cp /root/SYNSTALL/DEFAULT_USER/.xinitrc         /home/$DEFAULT_USER990/.xinitrc"
-            arch-chroot /mnt "cp /root/SYNSTALL/DEFAULT_USER/.zshrc           /home/$DEFAULT_USER990/.zshrc"
-            arch-chroot /mnt "chown    $DEFAULT_USER990:$DEFAULT_USER990    -r      /home/$DEFAULT_USER990"
-
-            arch-chroot /mnt "echo Enabling DHCP client on boot               && systemctl enable dhcpcd.service"
-            arch-chroot /mnt "echo Enabling Wireless daemon on boot           && systemctl enable iwd.service"    
-            arch-chroot /mnt "echo BOOT-PARAMATER systemd-boot on boot        && bootctl --path=/boot install"
+            arch-chroot /mnt cp -r /root/SYNSTALL/scripts                    /home/$DEFAULT_USER990/SYNSTALL
+            arch-chroot /mnt cp -r /root/SYNSTALL/DEFAULT_USER/.config       /home/$DEFAULT_USER990/.config
+            arch-chroot /mnt cp -r /root/SYNSTALL/DEFAULT_USER/.local        /home/$DEFAULT_USER990/.local
+            arch-chroot /mnt cp /root/SYNSTALL/DEFAULT_USER/.xinitrc         /home/$DEFAULT_USER990/.xinitrc
+            arch-chroot /mnt cp /root/SYNSTALL/DEFAULT_USER/.zshrc           /home/$DEFAULT_USER990/.zshrc
+            arch-chroot /mnt chown    $DEFAULT_USER990:$DEFAULT_USER990    -r      /home/$DEFAULT_USER990
+            arch-chroot /mnt echo Enabling DHCP client on boot               && arch-chroot / mnt systemctl enable dhcpcd.service
+            arch-chroot /mnt echo Enabling Wireless daemon on boot           && arch-chroot / mnt systemctl enable iwd.service
+            arch-chroot /mnt echo BOOT-PARAMATER systemd-boot on boot        && arch-chroot / mnt bootctl --path=/boot install
