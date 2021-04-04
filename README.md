@@ -39,5 +39,5 @@ Some network related scripts
 - ip-configure.sh # which will set an IP if you can't use DHCP and are lazy.
 
 # /xibo-related
-Archiso files used for an automated Digital-signage player. 
+Archiso files used for an automated Digital-signage player. Some custom dotfiles as well as chromium stuff for autostart.
 
