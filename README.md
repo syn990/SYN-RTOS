@@ -25,6 +25,13 @@ Contains all the required dotfiles to rebuild the system and provide the created
 - tint2 (bar at top of screen)
 - kwriterc (rc files for kwrite text editor)
 
+./oh-my-zsh -- Dumping ground for oh-my-zsh extentions
+
+Other files included:
+- .profile -- export QT_QPA_PLATFORMTHEME="qt5ct"
+- .xinitrc -- startx enviroment stuff
+- .zshrc -- resultant file after installing oh-my-zsh
+
 # /network_scripts
 Some network related scripts
 
