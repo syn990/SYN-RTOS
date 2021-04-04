@@ -16,6 +16,15 @@ It's possible once the main and future-xibo* branches are complete these script 
 
 The folders included are currenty not required at all for SYN-RTOS.
 
+# /default-dotfiles
+Contains all the required dotfiles to rebuild the system and provide the created user with a desktop enviroment. This can be adapted.
+
+./config -- Contains configuration files for software inluced such as:
+- openbox (window manager, uses xorg)
+- qt5ctl (required for themeing on QT apps)
+- tint2 (bar at top of screen)
+- kwriterc (rc files for kwrite text editor)
+
 # /network_scripts
 Some network related scripts
 
