@@ -23,6 +23,7 @@ echo Generating Various System Variables
     touch /etc/vconsole.conf    && echo 'KEYMAP=uk'                             >> /etc/vconsole.conf
     touch /etc/hostname         && echo $FINAL_HOSTNAME990                      >> /etc/hostname
     touch /etc/issue            && echo 'Syntax990 RTOS (arch) \r (\l)'         >> /etc/issue
+    ln -sf                      /usr/share/zoneinfo/GB                          /etc/localtime
 
 echo Forced Manual-Editi of sudoer file
 
