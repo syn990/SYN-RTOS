@@ -1,5 +1,5 @@
 # SYN-RTOS - Syntax990 Real-Time Operating System.
-This Repo serves as a place to store and manage the source tree, as it's getting quite messy!
+This repo serves as a place to store and manage the source tree, as it's getting quite messy!
 
 Currently there are two main scripts: (these will later be merged into a single script. It can't seem to run arch-chroot without stopping... this halts step two.) 
 
