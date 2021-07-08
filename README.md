@@ -39,5 +39,9 @@ Some network related scripts
 - ip-configure.sh # which will set an IP if you can't use DHCP and are lazy.
 
 # /xibo-related
-Archiso files used for an automated Digital-signage player. Some custom dotfiles as well as chromium stuff for autostart.
-
+Archiso files used for an automated Digital-signage player. 
+- Some custom dotfiles as well as chromium stuff for autostart. (be mindful of home dir and default path for openbox autostart)
+- SDDM to autologin needs configuring so default sddm config does not need manual invervention.
+- Boot has problem that it needs UUID defined in arch.conf.
+- Boot has problem that loader.conf does not auto-appear
+- The ttf-bitstream-vera font needs to be installed or Xibo picks strange fonts.
