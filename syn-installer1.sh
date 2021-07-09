@@ -25,7 +25,7 @@ echo Generating Various System Variables
     touch /etc/issue            && echo 'Syntax990 RTOS (arch) \r (\l)'         >> /etc/issue
     ln -sf                      /usr/share/zoneinfo/GB                          /etc/localtime
 
-echo Forced Manual-Editi of sudoer file
+echo Forced Manual-Edit of sudoer file
 
 EDITOR=nano visudo
 
@@ -38,19 +38,20 @@ echo Correct Permissions For $DEFAULT_USER990
 
     useradd -m -G wheel -s /bin/zsh $DEFAULT_USER990
       passwd $DEFAULT_USER990
-        mkdir /home/$DEFAULT_USER990/SYNSTALL
-        mkdir /home/$DEFAULT_USER990/.config
-        mkdir /home/$DEFAULT_USER990/.local
-            cp -r /root/SYNSTALL/scripts                    /home/$DEFAULT_USER990/SYNSTALL
-            cp -r /root/SYNSTALL/DEFAULT_USER/.config       /home/$DEFAULT_USER990/.config
-            cp -r /root/SYNSTALL/DEFAULT_USER/.local        /home/$DEFAULT_USER990/.local
-            cp /root/SYNSTALL/DEFAULT_USER/.xinitrc         /home/$DEFAULT_USER990/.xinitrc
-            cp /root/SYNSTALL/DEFAULT_USER/.zshrc           /home/$DEFAULT_USER990/.zshrc
+  #      mkdir /home/$DEFAULT_USER990/SYNSTALL
+  #      mkdir /home/$DEFAULT_USER990/.config
+  #      mkdir /home/$DEFAULT_USER990/.local
+  #          cp -r /root/SYNSTALL/scripts                    /home/$DEFAULT_USER990/SYNSTALL
+  #          cp -r /root/SYNSTALL/DEFAULT_USER/.config       /home/$DEFAULT_USER990/.config
+  #          cp -r /root/SYNSTALL/DEFAULT_USER/.local        /home/$DEFAULT_USER990/.local
+  #          cp /root/SYNSTALL/DEFAULT_USER/.xinitrc         /home/$DEFAULT_USER990/.xinitrc
+  #          cp /root/SYNSTALL/DEFAULT_USER/.zshrc           /home/$DEFAULT_USER990/.zshrc
       chown    $DEFAULT_USER990:$DEFAULT_USER990    -r      /home/$DEFAULT_USER990
         
 echo Enabling DHCP client on boot               && systemctl enable dhcpcd.service
 echo Enabling Wireless daemon on boot           && systemctl enable iwd.service    
 echo BOOT-PARAMATER systemd-boot on boot        && bootctl --path=/boot install
+
 #loader.conf and arch.conf are missing instructions here thus system will fail to boot
 #these files either need to be sourced so they can be copied across.
 #in fact... the whole thing looks like a mess again and needs some formal structure.
