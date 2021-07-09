@@ -36,7 +36,7 @@
 					pacstrap /mnt lxqt-qtplugin openbox tint2  zsh 
                     
 					#Install CLI applications
-					pacstrap /mnt lshw nano reflector rsync ranger sshfs 
+					pacstrap /mnt lshw nano reflector rsync ranger sshfs wget
 					
 					#Install GUI applications
 					pacstrap /mnt chromium engrampa kwrite lxrandr pcmanfm-qt spectacle vlc
