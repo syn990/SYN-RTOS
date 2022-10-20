@@ -1,47 +1,34 @@
-# SYN-RTOS - Syntax990 Real-Time Operating System.
-This repo serves as a place to store and manage the source tree, as it's getting quite messy!
+# SYN-RTOS = 'Syntax Real-Time Operating System'.
 
-Currently there are two main scripts: (these will later be merged into a single script. It can't seem to run arch-chroot without stopping... this halts step two.) 
+This repository's sole purpose is to contain the full build materials for SYN-RTOS-V3.
 
-- README.md # It's this readme.
-- syn-installer0.sh # part one ~ Setup partitions, pacstrap packages and generate fstab.
-- syn-installer1.sh # part two ~ Customize configration files, create users and enable services.
+# SYN-RTOS-V1
 
-It's possible once the main and future-xibo* branches are complete these script will: 
-- Be simple to clone the main branch to make changes to the installer script before running it.
-- Have a clear folder structure so copying configuration files is easier to intergrate into the script.
-- Have more variation in the deployment tasks being crafted.
-- Provide a basic framework for creating other meta-distrobutions
- 
+SYN-RTOS-V1 in within itself has never existed, it is instead just a grey concept that has not yet been endoued on us.
 
-The folders included are currenty not required at all for SYN-RTOS.
+# SYN-RTOS-V2
 
-# /default-dotfiles
-Contains all the required dotfiles to rebuild the system and provide the created user with a desktop enviroment. This can be adapted.
+Version 2 existed as a bootstrapper of sorts, for a vanilla image of Arch Linux, requiring multiple inputs from a human as well as certain specfic un-documented requirements for reaching the resulting system. The 'git' package was neccessary to source the scripts and template dotfiles. These operations would instruct the live Arch Linux system to hopefully deploy a complete, reproducable system, live, without needing to deploy an image or physically clone data. The scripts were just about functional, design issues that made chroot impossible, manually needing to install git in a live enviroment was not always possible as the live disk may run out of storage.
 
-./config -- Contains configuration files for software inluced such as:
-- openbox (window manager, uses xorg)
-- qt5ctl (required for themeing on QT apps)
-- tint2 (bar at top of screen)
-- kwriterc (rc files for kwrite text editor)
+Other methods such as transfering the build materials with a USB, mounting and dealing with additional filesystem operations were required. This would introduce inconsistencies with how partitioning would result. This was cumbersome and not sustainable given the potential changes from Arch and the increasing likleyhood my script would simply break.
 
-./oh-my-zsh -- Dumping ground for oh-my-zsh extentions
+The goal was at the time, to make a zero-touch, sane, modifiable meta-configuration of Arch Linux, however multiple projects with varying complexity have acheived this in a better way, and go against the spirit of Arch Linux to some degree. Now the latest 'arch-installer' packae has to some degree done the heavy lifting, it's possible this Arch Linux endorsed feature may help.
 
-Other files included:
-- .profile -- export QT_QPA_PLATFORMTHEME="qt5ct"
-- .xinitrc -- startx enviroment stuff
-- .zshrc -- resultant file after installing oh-my-zsh
+SYN-RTOS-V2 ceases simply due to the lack of reproducability and poorly, or not at all in anyway meeting a zero-touch design. It would help reduce manual tasks but only to a varaible degree considering how bespoke hardware and build requirements are.
 
-# /network_scripts
-Some network related scripts
+# SYN-RTOS-V3 
 
-- eno1-wlan0_bridge.sh # will provide an ethernet port with a route to the internet. 
-- ip-configure.sh # which will set an IP if you can't use DHCP and are lazy.
+Version 3 instead is an ambitious attempt to utilise modern utilities provided by Arch Linux such as 'archiso', 'archinstaller', 'pacstrap', 'Openbox' + 'Tint2' + 'xcompmgr', curated dotfiles, custom scripts and images/icons/fonts, pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
 
-# /xibo-related
-Archiso files used for an automated Digital-signage player. 
-- Some custom dotfiles as well as chromium stuff for autostart. (be mindful of home dir and default path for openbox autostart)
-- SDDM to autologin needs configuring so default sddm config does not need manual invervention.
-- Boot has problem that it needs UUID defined in arch.conf.
-- Boot has problem that loader.conf does not auto-appear
-- The ttf-bitstream-vera font needs to be installed or Xibo picks strange fonts.
+SYN-RTOS-V3 has these core principles that the resulting system must have.
+
+- 1. The system on Idle must use less than 300MB of memory. Typical values range between 129MB
+and 168MB. Perhaps just over 200MB with the graphical enviroment. The operating system must have very little memory overhead.
+
+- 2. Be very kind to the CPU and do not ask for much on Idle.
+
+- 3. Login directly to a tty. The graphical system will not be wrapped into an xorg-powered login UI. The user-centric nature of the system, and performance requirement to maintain the login UI, session management, multiple accounts, graphical components required during boot, are against principles 2 therefore not recreating an abstract login mechanism is a huge part of why this is possible.
+
+- 4. Be understood and modifiable to the fullest extent, so that SYN-RTOS is the bootloader for your own vision.
+
+These may deviate or not even be on the same abstract plain as The Arch Way or KISS principles. These are design choices for the sake of SYN-RTOS's current identity (and what it has successfully been for over 5 years). Only SYN-RTOS-V3 attempts to fully complete the ISO and zero-touch deployment methods. Further increasing development speed and testing.
