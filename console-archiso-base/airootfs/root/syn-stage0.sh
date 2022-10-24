@@ -46,15 +46,15 @@ parted --script /dev/sda mklabel gpt mkpart primary fat32 1Mib 200Mib set 1 boot
                     reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
                     
 					echo "Installing base system with development packages"
-                    pacstrap /mnt base base-devel dosfstools fakeroot gcc git linux linux-firmware sudo reflector 
+                    			pacstrap /mnt base base-devel dosfstools fakeroot gcc git linux linux-firmware sudo reflector 
                     
 					echo "Installing System Daemons"
-                    pacstrap /mnt alsa-utils dhcpcd dnsmasq iwd pulseaudio python-pyalsa xorg-server x11vnc xcompmgr 
+                    			pacstrap /mnt alsa-utils dhcpcd dnsmasq iwd pulseaudio python-pyalsa xorg-server x11vnc xcompmgr 
                     
 					echo "Installing System Utilties"
-					pacstrap /mnt lxqt-qtplugin openbox tint2 zsh rsync pavucontrol-qt grub-customizer obconf-qt
+					pacstrap /mnt lxqt-qtplugin openbox tint2 zsh rsync pavucontrol-qt grub-customizer obconf-qt archlinux-xdg-menu
 					
-                    echo "Installing CLI applications"
+                    			echo "Installing CLI applications"
 					pacstrap /mnt lshw nano reflector ranger sshfs wget htop brightnessctl hdparm lshw yt-dlp
                 
 					echo "Installing GUI applications"
@@ -63,8 +63,8 @@ parted --script /dev/sda mklabel gpt mkpart primary fat32 1Mib 200Mib set 1 boot
 					echo "Installing SYN-Fonts"
 					pacstrap /mnt terminus-font ttf-bitstream-vera
                     
-                    echo "Installing SYN-RTOS Virtualization & Build set:"
-                    git archiso git qemu-desktop edk2-ovmf libvirt virt-manager virt-viewer hexedit binwalk android-tools
+                    			echo "Installing SYN-RTOS Virtualization & Build set:"
+                    			pacstrap /mnt git archiso git qemu-desktop edk2-ovmf libvirt virt-manager virt-viewer hexedit binwalk android-tools
                     
     
 # This is just a requirement for boot functionality to exist on a physical disks
