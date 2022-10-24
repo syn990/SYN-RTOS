@@ -14,8 +14,6 @@ brightnessctl
 brltty
 broadcom-wl
 btrfs-progs
-byobu
-clonezilla
 cpio
 cpupower
 cryfs
@@ -62,6 +60,7 @@ libusb-compat
 linux
 linux-firmware
 livecd-sounds
+lshw
 lsscsi
 lvm2
 lynx
@@ -130,7 +129,7 @@ udftools
 usb_modeswitch
 usbmuxd
 usbutils
-virtualbox-guest-utils-nox
+vlc
 vpnc
 wget
 whois
@@ -139,9 +138,7 @@ wireless-regdb
 wireless_tools
 wpa_supplicant
 wvdial
-x11vnc
 xfsprogs
 xl2tpd
-yt-dlp
 zsh
 zsh-autosuggestions
