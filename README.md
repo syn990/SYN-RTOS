@@ -12,7 +12,7 @@ Version 2 existed as a bootstrapper of sorts, for a vanilla image of Arch Linux,
 
 Other methods such as transfering the build materials with a USB, mounting and dealing with additional filesystem operations were required. This would introduce inconsistencies with how partitioning would result. This was cumbersome and not sustainable given the potential changes from Arch and the increasing likleyhood my script would simply break.
 
-The goal was at the time, to make a zero-touch, sane, modifiable meta-configuration of Arch Linux, however multiple projects with varying complexity have acheived this in a better way, and go against the spirit of Arch Linux to some degree. Now the latest 'arch-installer' packae has to some degree done the heavy lifting, it's possible this Arch Linux endorsed feature may help.
+The goal was at the time, to make a zero-touch, sane, modifiable meta-configuration of Arch Linux, however multiple projects with varying complexity have acheived this in a better way, and go against the spirit of Arch Linux to some degree. Now the latest 'arch-installer' package has to some degree done the heavy lifting, it's possible this Arch Linux endorsed feature may help.
 
 SYN-RTOS-V2 ceases simply due to the lack of reproducability and poorly, or not at all in anyway meeting a zero-touch design. It would help reduce manual tasks but only to a varaible degree considering how bespoke hardware and build requirements are.
 
