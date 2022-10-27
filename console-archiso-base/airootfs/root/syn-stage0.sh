@@ -46,10 +46,10 @@ parted --script /dev/sda mklabel gpt mkpart primary fat32 1Mib 200Mib set 1 boot
                     reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
                     
 					echo "Installing base system with development packages"
-                    			pacstrap /mnt base base-devel dosfstools fakeroot gcc git linux linux-firmware sudo reflector 
-                    
+                    			pacstrap /mnt base base-devel dosfstools fakeroot gcc git linux linux-firmware sudo reflector pacman-contrib
+      
 					echo "Installing System Daemons"
-                    			pacstrap /mnt alsa-utils dhcpcd dnsmasq iwd pulseaudio python-pyalsa xorg-server x11vnc xcompmgr 
+                    			pacstrap /mnt alsa-utils dhcpcd dnsmasq hostapd iwd pulseaudio python-pyalsa xorg-server x11vnc xcompmgr 
                     
 					echo "Installing System Utilties"
 					pacstrap /mnt lxqt-qtplugin openbox tint2 zsh rsync pavucontrol-qt grub-customizer obconf-qt archlinux-xdg-menu
