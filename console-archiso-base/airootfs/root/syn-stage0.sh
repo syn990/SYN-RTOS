@@ -49,7 +49,7 @@ parted --script /dev/sda mklabel gpt mkpart primary fat32 1Mib 200Mib set 1 boot
                     			pacstrap /mnt base base-devel dosfstools fakeroot gcc git linux linux-firmware sudo reflector pacman-contrib
       
 					echo "Installing System Daemons"
-                    			pacstrap /mnt alsa-utils dhcpcd dnsmasq hostapd iwd pulseaudio python-pyalsa xorg-server x11vnc xcompmgr 
+                    			pacstrap /mnt alsa-utils dhcpcd dnsmasq hostapd iwd pulseaudio python-pyalsa xorg-server x11vnc xcompmgr xorg-xinit
                     
 					echo "Installing System Utilties"
 					pacstrap /mnt lxqt-qtplugin openbox tint2 zsh rsync pavucontrol-qt grub-customizer obconf-qt archlinux-xdg-menu
