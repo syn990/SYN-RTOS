@@ -2,9 +2,9 @@
 # shellcheck disable=SC2034
 
 iso_name="SYN-RTOS"
-iso_label="AUIO"
+iso_label="SYN-RTOS"
 iso_publisher="Syntax990"
-desktop="Console"
+desktop="Install Image"
 iso_application="SYN-RTOS-V3 ${desktop} Live/Rescue Image"
 iso_version="V3"
 install_dir="arch"
