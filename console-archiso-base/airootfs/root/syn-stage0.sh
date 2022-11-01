@@ -115,7 +115,7 @@ echo  "|  _/ _ \ (__\__ \ | | |   / / _ \|  _/"
 echo  "|_|/_/ \_\___|___/ |_| |_|_\/_/ \_\_|  "
 echo "Installing GUI applications"
 
-    pacstrap /mnt chromium engrampa kwrite lxrandr pcmanfm-qt spectacle vlc feh kitty spectacle kdenlive gimp audacity
+    pacstrap /mnt chromium engrampa kwrite lxrandr pcmanfm-qt spectacle vlc feh kitty spectacle kdenlive gimp audacity obs-studio
 
 echo  " ___  _   ___ ___ _____ ___    _   ___ "
 echo  "| _ \/_\ / __/ __|_   _| _ \  /_\ | _ |"""
