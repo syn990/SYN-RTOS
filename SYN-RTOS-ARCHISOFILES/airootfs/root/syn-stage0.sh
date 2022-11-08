@@ -75,68 +75,41 @@ echo "If you didn't read the source properly you've probably wiped all your prec
                     echo "Updating Mirrorlist"
                     reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 
-echo  " ___  _   ___ ___ _____ ___    _   ___ "
-echo  "| _ \/_\ / __/ __|_   _| _ \  /_\ | _ |"""
-echo  "|  _/ _ \ (__\__ \ | | |   / / _ \|  _/"
-echo  "|_|/_/ \_\___|___/ |_| |_|_\/_/ \_\_|  "
-echo "Installing base system with development packages"
 
+# You can add/remove packages in these variables. It's done this way so you can see waht's being installed. The variables are meaningless and pacstrap does not care,
+# It's been done this way so you can see what packages are being installed so you can make sensible decisions about what you want on the result system.
 
-    pacstrap /mnt base base-devel dosfstools fakeroot gcc git linux linux-firmware sudo reflector pacman-contrib
+# Base system with development packages"
+	BASE_990="base-devel dosfstools fakeroot gcc git linux linux-firmware sudo reflector pacman-contrib"
 
-                    
-echo  " ___  _   ___ ___ _____ ___    _   ___ "
-echo  "| _ \/_\ / __/ __|_   _| _ \  /_\ | _ |"""
-echo  "|  _/ _ \ (__\__ \ | | |   / / _ \|  _/"
-echo  "|_|/_/ \_\___|___/ |_| |_|_\/_/ \_\_|  "
-echo "Installing System Daemons"
+# System Daemons
+	DAEMONS_990="alsa-utils dhcpcd dnsmasq hostapd iwd man pulseaudio python-pyalsa xorg-server x11vnc xcompmgr xorg-xinit"
 
+# System Utilties
+	UTILS_990="lxqt-qtplugin openbox tint2 zsh rsync pavucontrol-qt grub-customizer obconf-qt archlinux-xdg-menu"
 
-    pacstrap /mnt alsa-utils dhcpcd dnsmasq hostapd iwd man pulseaudio python-pyalsa xorg-server x11vnc xcompmgr xorg-xinit
+# CLI applications
+	CLI-APP_990="lshw nano reflector ranger sshfs wget htop brightnessctl hdparm lshw yt-dlp"
 
-                    
-echo  " ___  _   ___ ___ _____ ___    _   ___ "
-echo  "| _ \/_\ / __/ __|_   _| _ \  /_\ | _ |"""
-echo  "|  _/ _ \ (__\__ \ | | |   / / _ \|  _/"
-echo  "|_|/_/ \_\___|___/ |_| |_|_\/_/ \_\_|  "
-echo "Installing System Utilties"
+# GUI applications
+	GUI-APP_990="chromium engrampa kwrite lxrandr pcmanfm-qt spectacle vlc feh kitty spectacle kdenlive gimp audacity obs-studio openra"
 
+# Fonts
+	FONTS_990="terminus-font ttf-bitstream-vera"
 
-    pacstrap /mnt lxqt-qtplugin openbox tint2 zsh rsync pavucontrol-qt grub-customizer obconf-qt archlinux-xdg-menu
+# SYN-RTOS Virtualization & Build set:"
+	BUILD-SET_990="git archiso git qemu-desktop edk2-ovmf libvirt virt-manager virt-viewer hexedit binwalk android-tools"
 
-echo  " ___  _   ___ ___ _____ ___    _   ___ "
-echo  "| _ \/_\ / __/ __|_   _| _ \  /_\ | _ |"""
-echo  "|  _/ _ \ (__\__ \ | | |   / / _ \|  _/"
-echo  "|_|/_/ \_\___|___/ |_| |_|_\/_/ \_\_|  "
-echo "Installing CLI applications"
-
-
-    pacstrap /mnt lshw nano reflector ranger sshfs wget htop brightnessctl hdparm lshw yt-dlp
+# Mastar Variable
+	SYN-RTOS-990="$BASE_990 $DAEMONS_990 $UTILS_990 $CLI-APP_990 $GUI-APP_990 $FONTS_990 $BUILD-SET_990"
 
 echo  " ___  _   ___ ___ _____ ___    _   ___ "
 echo  "| _ \/_\ / __/ __|_   _| _ \  /_\ | _ |"""
 echo  "|  _/ _ \ (__\__ \ | | |   / / _ \|  _/"
 echo  "|_|/_/ \_\___|___/ |_| |_|_\/_/ \_\_|  "
-echo "Installing GUI applications"
+echo "Installing packages to the resulting system - this might take a while so go do somthing else or just watch the screen for ages"
 
-    pacstrap /mnt chromium engrampa kwrite lxrandr pcmanfm-qt spectacle vlc feh kitty spectacle kdenlive gimp audacity obs-studio openra
-
-echo  " ___  _   ___ ___ _____ ___    _   ___ "
-echo  "| _ \/_\ / __/ __|_   _| _ \  /_\ | _ |"""
-echo  "|  _/ _ \ (__\__ \ | | |   / / _ \|  _/"
-echo  "|_|/_/ \_\___|___/ |_| |_|_\/_/ \_\_|  "
-echo "Installing SYN-Fonts"
-    
-    pacstrap /mnt terminus-font ttf-bitstream-vera
-
-echo  " ___  _   ___ ___ _____ ___    _   ___ "
-echo  "| _ \/_\ / __/ __|_   _| _ \  /_\ | _ |"""
-echo  "|  _/ _ \ (__\__ \ | | |   / / _ \|  _/"
-echo  "|_|/_/ \_\___|___/ |_| |_|_\/_/ \_\_|  "
-echo "Installing SYN-RTOS Virtualization & Build set:"
-
-    pacstrap /mnt git archiso git qemu-desktop edk2-ovmf libvirt virt-manager virt-viewer hexedit binwalk android-tools
-                    
+	pacstrap /mnt $SYN-RTOS-990
 
 # This is just a requirement for boot functionality to exist on a physical disks
 # Could this be improved rather than being as part of a shellscript
