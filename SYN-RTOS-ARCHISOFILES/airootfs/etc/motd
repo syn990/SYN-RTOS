@@ -1,0 +1,21 @@
+To install [38;2;23;147;209mSYN-RTOS[0m please contact directly using "william@syntax990.com":
+Find the build materials here: https://github.com/syn990/syn-rtos.git
+
+Check out the current directory after logging in:
+
+- [38;2;23;147;209msyn-stage0.sh[0m
+
+It's goal is to nuke whatever drives detected and dump a bunch of packages and setup the genfstab.
+You can modify the pacstrap lists but anything else might not be useful at this stage.
+
+- [38;2;23;147;209msyn-stage1.sh[0m
+
+This must be copied to the new system after running the first script, and then ran within chroot. It'll generate the user
+and important junk.
+
+It also sets bootctl as the bootloader, and requires manual creation of the .conf's
+in the EFI directory. You can ommit this line and build your own bootloader from scratch. This needs work...
+
+These may even be merged if we can get around the whole chroot nonsense.
+
+[41m [41m [41m [40m [44m [40m [41m [46m [45m [41m [46m [43m [41m [44m [45m [40m [44m [40m [41m [44m [41m [41m [46m [42m [41m [44m [43m [41m [45m [40m [40m [44m [40m [41m [44m [42m [41m [46m [44m [41m [46m [47m [0m
