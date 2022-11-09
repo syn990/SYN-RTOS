@@ -1,62 +1,44 @@
 #!/bin/sh
 
-echo Although generic and not neccessary for a zero-touch solution to implement
-echo human-required settings such as keyboard locale, this is neccessary to ensure
-echo an rescue/escape shell can still be recovered with manual intervention.
+# Actually read this script, make changes before running it, and understand each line of code before committing yourself to a build.
+# If you lack the understanding or glaze over it, you could destroy your existing system.
 
-echo These should be baked into the ISO instead of being defined as shell variables
-echo when these are already initialised after the fact.
+# Future ambitions include setting up non-standard file-system such as xfs, zfs 
+# or btrfs for block-device backups instead of individual files.
 
-# Set keyboard layout in TTY to UK
+# Encryption is a very real possibility to be baked in both the live and
+# persistent enviroment.
 
-loadkeys uk
+loadkeys uk			# Setup the keyboard layout
+timedatectl set-ntp true	# Setup NTP so the time is up-to-date
 
-echo Setting up NTP should also be baked into the ISO rather than being applied
-echo with a doublewhammy. These configurations bear nothing for the resulting
-echo Deployment and are mearly an artifact of an adapted setup enviroment
-echo rather than being curiated into its own distingused identity.
-    
-echo Setting up NTP
+#  Stale. Also really scary... This is a "parted" script that aggressivley erases
+#  the disks of target /dev/sda which is inaccurate and dangerous to assume.
 
-timedatectl set-ntp true
+echo "____    __    ____  __  .______    __  .__   __.   _______ "
+echo "\   \  /  \  /   / |  | |   _  \  |  | |  \ |  |  /  _____|"
+echo " \   \/    \/   /  |  | |  |_)  | |  | |   \|  | |  |  __  "
+echo "  \            /   |  | |   ___/  |  | |  .    | |  | |_ | "
+echo "   \    /\    /    |  | |  |      |  | |  |\   | |  |__| | "
+echo "    \__/  \__/     |__| | _|      |__| |__| \__|  \______| "
+echo " ___________    ____  _______ .______     ____    ____ .___________. __    __   __  .__   __.   _______ "
+echo "|   ____\   \  /   / |   ____||   _  \    \   \  /   / |           ||  |  |  | |  | |  \ |  |  /  _____|"
+echo "|  |__   \   \/   /  |  |__   |  |_)  |    \   \/   /   ---|  |---- |  |__|  | |  | |   \|  | |  |  __  "
+echo "|   __|   \      /   |   __|  |      /      \_    _/       |  |     |   __   | |  | |  .    | |  | |_ | "
+echo "|  |____   \    /    |  |____ |  |\  \----.   |  |         |  |     |  |  |  | |  | |  |\   | |  |__| | "
+echo "|_______|   \__/     |_______|| _|  ._____|   |__|         |__|     |__|  |__| |__| |__| \__|  \______| "
+echo "If you didn't read the source properly you've probably wiped all your precious data..."                                                        
 
-echo  Stale and soon to be trimmed. This is a parted script that aggressivley erases
-echo  the disks of target /dev/sda which is inaccurate and dangerous to assume.
-echo  Instead rather its worth investigating if anything is salvagable
-echo  from the automated noob-installer that recently hit the repos.
-
-echo  Other ambitions include setting up non-standard file-system such as xfs, zfs 
-echo  or btrfs for block-device backups instead of individual files.
-echo  Encryption is a very real possibility to be baked in both the live and
-echo  persistent envrooment.
-
-echo  "____    __    ____  __  .______    __  .__   __.   _______ "
-echo  "\   \  /  \  /   / |  | |   _  \  |  | |  \ |  |  /  _____|"
-echo  " \   \/    \/   /  |  | |  |_)  | |  | |   \|  | |  |  __  "
-echo  "  \            /   |  | |   ___/  |  | |  .    | |  | |_ | "
-echo  "   \    /\    /    |  | |  |      |  | |  |\   | |  |__| | "
-echo  "    \__/  \__/     |__| | _|      |__| |__| \__|  \______| "
-echo  " ___________    ____  _______ .______     ____    ____ .___________. __    __   __  .__   __.   _______ "
-echo  "|   ____\   \  /   / |   ____||   _  \    \   \  /   / |           ||  |  |  | |  | |  \ |  |  /  _____|"
-echo  "|  |__   \   \/   /  |  |__   |  |_)  |    \   \/   /   ---|  |---- |  |__|  | |  | |   \|  | |  |  __  "
-echo  "|   __|   \      /   |   __|  |      /      \_    _/       |  |     |   __   | |  | |  .    | |  | |_ | "
-echo  "|  |____   \    /    |  |____ |  |\  \----.   |  |         |  |     |  |  |  | |  | |  |\   | |  |__| | "
-echo  "|_______|   \__/     |_______|| _|  ._____|   |__|         |__|     |__|  |__| |__| |__| \__|  \______| "
-                                                                                                        
-                                                           
-                                                                                            
-echo If a lable can be defined it it will really help with the entries and loader.conf for bootctl
-echo Perhaps an MBR setup can leverage this?
+# This currently wipes sda, without any prompt. We need it to create a device lable as this will help bootctl be more predictable						   
+# It's set to gpt so a different script is needed for MBR setups. 
 
 parted --script /dev/sda mklabel gpt mkpart primary fat32 1Mib 200Mib set 1 boot on
-    parted --script /dev/sda mkpart primary ext4 201Mib 100%
-        mkfs.vfat -F 32 /dev/sda1
+parted --script /dev/sda mkpart primary ext4 201Mib 100%
+	mkfs.vfat -F 32 /dev/sda1
         mkfs.ext4 -F /dev/sda2
-            mount /dev/sda2 /mnt
-            mkdir /mnt/boot/
-            mount /dev/sda1 /mnt/boot
- 
- 
+        	mount /dev/sda2 /mnt
+        	mkdir /mnt/boot/
+		mount /dev/sda1 /mnt/boot
  
 echo "     _______.____    ____ .__   __.        .______     .___________.  ______        _______."
 echo "    /       |\   \  /   / |  \ |  |        |   _  \    |           | /  __  \      /       |"
@@ -64,44 +46,19 @@ echo "   |   (----  \   \/   /  |   \|  |  ______|  |_)  |    ---|  |---- |  |  
 echo "    \   \      \_    _/   |  .    | |______|      /        |  |     |  |  |  |     \   \    "
 echo ".----)   |       |  |     |  |\   |        |  |\  \----.   |  |     |   --'  | .----)   |   "
 echo "|_______/        |__|     |__| \__|        | _|  ._____|   |__|      \______/  |_______/    "
-echo "Starting the installer now all the dives have been wiped"
-echo "If you didn't read the source properly you've probably wiped all your precious data..."
- 
-    # Update live enviroment with latest packages from /etc/mirrorlist
-        # Use reflector and download the best mirrorlist for the live enviroment
-            # Tell pacstrap to download all required packages to new install at /mnt
-                pacman -Syy
-                
-                    echo "Updating Mirrorlist"
-                    reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
-
 
 # You can add/remove packages in these variables. It's done this way so you can see waht's being installed. The variables are meaningless and pacstrap does not care,
 # It's been done this way so you can see what packages are being installed so you can make sensible decisions about what you want on the result system.
+# Literally, all you need to do is ensure the package name is present and it's a valid package, and pacstrap will install it.
 
-# Base system with development packages"
-	BASE_990="base-devel dosfstools fakeroot gcc git linux linux-firmware sudo reflector pacman-contrib"
-
-# System Daemons
-	DAEMONS_990="alsa-utils dhcpcd dnsmasq hostapd iwd man pulseaudio python-pyalsa xorg-server x11vnc xcompmgr xorg-xinit"
-
-# System Utilties
-	UTILS_990="lxqt-qtplugin openbox tint2 zsh rsync pavucontrol-qt grub-customizer obconf-qt archlinux-xdg-menu"
-
-# CLI applications
-	CLI-APP_990="lshw nano reflector ranger sshfs wget htop brightnessctl hdparm lshw yt-dlp"
-
-# GUI applications
-	GUI-APP_990="chromium engrampa kwrite lxrandr pcmanfm-qt spectacle vlc feh kitty spectacle kdenlive gimp audacity obs-studio openra"
-
-# Fonts
-	FONTS_990="terminus-font ttf-bitstream-vera"
-
-# SYN-RTOS Virtualization & Build set:"
-	BUILD-SET_990="git archiso git qemu-desktop edk2-ovmf libvirt virt-manager virt-viewer hexedit binwalk android-tools"
-
-# Mastar Variable
-	SYN-RTOS-990="$BASE_990 $DAEMONS_990 $UTILS_990 $CLI-APP_990 $GUI-APP_990 $FONTS_990 $BUILD-SET_990"
+	BASE_990="base-devel dosfstools fakeroot gcc git linux linux-firmware sudo reflector pacman-contrib" 					# Base system with development packages"
+	DAEMONS_990="alsa-utils dhcpcd dnsmasq hostapd iwd man pulseaudio python-pyalsa xorg-server x11vnc xcompmgr xorg-xinit" 		# System Daemons
+	UTILS_990="lxqt-qtplugin openbox tint2 zsh rsync pavucontrol-qt grub-customizer obconf-qt archlinux-xdg-menu"				# System Utilties
+	CLI-APP_990="lshw nano reflector ranger sshfs wget htop brightnessctl hdparm lshw yt-dlp"						# CLI applications
+	GUI-APP_990="chromium engrampa kwrite lxrandr pcmanfm-qt spectacle vlc feh kitty spectacle kdenlive gimp audacity obs-studio openra"	# GUI applications
+	FONTS_990="terminus-font ttf-bitstream-vera" 												# Fonts
+	BUILD-SET_990="git archiso git qemu-desktop edk2-ovmf libvirt virt-manager virt-viewer hexedit binwalk android-tools"			# SYN-RTOS Virtualization & Build set
+	SYN-RTOS-990="$BASE_990 $DAEMONS_990 $UTILS_990 $CLI-APP_990 $GUI-APP_990 $FONTS_990 $BUILD-SET_990"					# Mastar Variable
 
 echo  " ___  _   ___ ___ _____ ___    _   ___ "
 echo  "| _ \/_\ / __/ __|_   _| _ \  /_\ | _ |"""
@@ -109,12 +66,12 @@ echo  "|  _/ _ \ (__\__ \ | | |   / / _ \|  _/"
 echo  "|_|/_/ \_\___|___/ |_| |_|_\/_/ \_\_|  "
 echo "Installing packages to the resulting system - this might take a while so go do somthing else or just watch the screen for ages"
 
-	pacstrap /mnt $SYN-RTOS-990
+# If you wanted to add your own packages:
+# Add packages after $SYN-RTOS-990 like this "pacstrap /mnt $SYN-RTOS-990 firefox mixxx libmp3"...
 
-# This is just a requirement for boot functionality to exist on a physical disks
-# Could this be improved rather than being as part of a shellscript
+	pacstrap /mnt $SYN-RTOS-990 
     
-# Generate filesystem table with boot information in respect to UUID assignment 
+
 echo  " _______  _______  __    _  _______  _______  _______  _______  _______ "
 echo  "|       ||       ||  |  | ||       ||       ||       ||   _   ||  _    |"
 echo  "|    ___||    ___||   |_| ||    ___||  _____||_     _||  |_|  || |_|   |"
@@ -122,18 +79,18 @@ echo  "|   | __ |   |___ |       ||   |___ | |_____   |   |  |       ||       |"
 echo  "|   ||  ||    ___||  _    ||    ___||_____  |  |   |  |       ||  _   | "
 echo  "|   |_| ||   |___ | | |   ||   |     _____| |  |   |  |   _   || |_|   |"
 echo  "|_______||_______||_|  |__||___|    |_______|  |___|  |__| |__||_______|"
+# Generate filesystem table with boot information in respect to UUID assignment 
 
-    genfstab -U /mnt >> /mnt/etc/fstab
+	genfstab -U /mnt >> /mnt/etc/fstab 			
 
 echo  "  ____   ___ _____ _____ ___ _     _____ ____  "
 echo  " |  _ \ / _ \_   _|  ___|_ _| |   | ____/ ___| "
 echo  " | | | | | | || | | |_   | || |   |  _| \___ \ "
 echo  " | |_| | |_| || | |  _|  | || |___| |___ ___) |"
 echo  " |____/ \___/ |_| |_|   |___|_____|_____|____/ "
-                                               
-#Move the 1.root_filesystem_overlay materials and cheap boot method across to the result system
+# Move the 1.root_filesystem_overlay materials and cheap boot method across to the result system
 
-    cp -Rv /root/SYN-RTOS-V3/1.root_filesystem_overlay/* /mnt/
+	cp -Rv /root/SYN-RTOS-V3/1.root_filesystem_overlay/* /mnt/
 	
 echo "     _______.____    ____ .__   __.        .______     .___________.  ______        _______."
 echo "    /       |\   \  /   / |  \ |  |        |   _  \    |           | /  __  \      /       |"
@@ -141,6 +98,6 @@ echo "   |   (----  \   \/   /  |   \|  |  ______|  |_)  |    ---|  |---- |  |  
 echo "    \   \      \_    _/   |  .    | |______|      /        |  |     |  |  |  |     \   \    "
 echo ".----)   |       |  |     |  |\   |        |  |\  \----.   |  |     |   --'  | .----)   |   "
 echo "|_______/        |__|     |__| \__|        | _|  ._____|   |__|      \______/  |_______/    "
+echo ""
 echo "State Zero Complete - You now need to chroot into the new system to continue building."
 echo "Assume the root file system was mounted on /mnt, you would need to type ""arch-chroot /mnt"""
- 
