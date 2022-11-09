@@ -1,24 +1,34 @@
 #!/bin/sh
-# Assumption - chroot into /mnt after script 0
+# Assumption - chroot into the new mounted root directory after syn-stage0.sh
+# This script (syn-stage1.sh) needs to be placed on the resulting root filesystem and executed from within chroot
+# Run this command: ( place the root directory for the new system, default is /mnt )
+# arch-chroot /mnt
 
-# Main script variables                                         
-DEFAULT_USER_990=syntax990
-FINAL_HOSTNAME_990=SYN-TESTBUILD
-LOCALE_GEN_990="en_GB.UTF-8 UTF-8"
-LOCALE_CONF_990="LANG=en_GB.UTF-8"
-KEYMAP_990="KEYMAP=uk"
-ISSUE_NAME_990="SYN-RTOS-V3 - Syntax Real-Time Operating System"
-SHELL_CHOICE_990=/bin/zsh
+# Main script variables:
+# These should be modified before running the script.
 
-echo Setting username
-echo Setting hostname
-echo Setting hardware Clock
-echo Updating package list using optimized mirror
-
-    hwclock --systohc           # Run hwclock to generate /etc/adjtime
-    pacman -Syy && reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
+    DEFAULT_USER_990=syntax990                                          # This defines the username to be created in the useradd command
+    FINAL_HOSTNAME_990=SYN-TESTBUILD                                    # This defines the hostname to be piped into /etc/hostname
+    LOCALE_GEN_990="en_GB.UTF-8 UTF-8"                                  # This defines some locale stuff ?
+    LOCALE_CONF_990="LANG=en_GB.UTF-8"                                  # This defines some locale stuff ?
+    ZONE_INFO990=GB                                                     # This defines some locale stuff ?
+    KEYMAP_990="KEYMAP=uk"                                              # This defines the terminal to use the UK key layout to /etc/vconsole.conf
+    ISSUE_NAME_990="SYN-RTOS-V3 - Syntax Real-Time Operating System"    # This defines the OS name to be piped into /etc/issue
+    SHELL_CHOICE_990=/bin/zsh                                           # This defines the default shell to use for the useradd command
     
-echo Generating Various System Variables
+# - Set the hardware clock to /etc/adjtime
+# - Pacman to update the package lists
+    
+    hwclock --systohc
+    pacman -Syy && reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
+
+        echo Set username to $DEFAULT_USER_990
+        echo Set hostname to $FINAL_HOSTNAME_990
+        echo Set various locale stuff = $LOCALE_GEN_990 $LOCALE_CONF_990 $ZONE_INFO990 $KEYMAP_990
+        echo Set hardware Clock
+        echo Reflector is generated an optimized mirror list to /etc/pacman.d/mirrorlist
+
+# Generating Various System Variables
 
     rm /etc/locale.gen
     touch /etc/locale.gen       && echo $LOCALE_GEN_990                         >> /etc/locale.gen
@@ -27,26 +37,20 @@ echo Generating Various System Variables
     touch /etc/vconsole.conf    && echo $KEYMAP_990                             >> /etc/vconsole.conf
     touch /etc/hostname         && echo $FINAL_HOSTNAME_990                     >> /etc/hostname
     touch /etc/issue            && echo $ISSUE_NAME_990                         >> /etc/issue
-    ln -sf                      /usr/share/zoneinfo/GB                          /etc/localtime
+    ln -sf                      /usr/share/zoneinfo/$ZONE_INFO990               /etc/localtime
 
-echo Forced Manual-Edit of sudoer file
+# Forced Manual Edit -- THIS NEEDS TO BE AUTOMATED WTF?
 
-EDITOR=nano visudo
-
-echo Create $DEFAULT_USER_990
-echo Create $DEFAULT_USER_990 Home Directory
-echo Add $DEFAULT_USER_990 To Wheel Group And Set Password
-echo Force Password Reset For $DEFAULT_USER_990
-echo Copy Scripts To $DEFAULT_USER_990 Account
-echo Correct Permissions For $DEFAULT_USER_990
+    EDITOR=nano visudo
 
 # Create the user based on the variables, assign them a default shell then take ownership of home directory and files.
-    useradd -m -G wheel -s $SHELL_CHOICE_990 $DEFAULT_USER_990
-      passwd $DEFAULT_USER_990
-      chown    $DEFAULT_USER_990:$DEFAULT_USER_990 -r /home/$DEFAULT_USER_990
+
+    useradd -m -G wheel -s $SHELL_CHOICE_990 $DEFAULT_USER_990              # Create the user, put them in the wheel group (for sudo permissions), then set their default shell.
+    passwd $DEFAULT_USER_990                                                # Set the user's password
+    chown $DEFAULT_USER_990:$DEFAULT_USER_990 -r /home/$DEFAULT_USER_990    # Let the user take ownership of their own files (or files may be owned by root!)
         
         
 # Enable systemd services for DHCP, WiFi and setup the bootloader
-echo Enabling DHCP client on boot               && systemctl enable dhcpcd.service
-echo Enabling Wireless daemon on boot           && systemctl enable iwd.service    
-echo BOOT-PARAMATER systemd-boot on boot        && bootctl --path=/boot install
+    systemctl enable dhcpcd.service                     # Enable the DHCP client on boot
+    systemctl enable iwd.service                        # Enable the Wireless daemon on boot
+    bootctl --path=/boot install                        # Tell bootctl about the boot directory (is this even relevent now files are included in 1.root_filesystem_overlay ?)
