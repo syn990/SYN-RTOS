@@ -51,14 +51,15 @@ echo "|_______/        |__|     |__| \__|        | _|  ._____|   |__|      \____
 # It's been done this way so you can see what packages are being installed so you can make sensible decisions about what you want on the result system.
 # Literally, all you need to do is ensure the package name is present and it's a valid package, and pacstrap will install it.
 
-	BASE_990="base-devel dosfstools fakeroot gcc git linux linux-firmware sudo reflector pacman-contrib" 					# Base system with development packages"
-	DAEMONS_990="alsa-utils dhcpcd dnsmasq hostapd iwd man pulseaudio python-pyalsa xorg-server x11vnc xcompmgr xorg-xinit" 		# System Daemons
-	UTILS_990="lxqt-qtplugin openbox tint2 zsh rsync pavucontrol-qt grub-customizer obconf-qt archlinux-xdg-menu"				# System Utilties
-	CLI-APP_990="lshw nano reflector ranger sshfs wget htop brightnessctl hdparm lshw yt-dlp"						# CLI applications
-	GUI-APP_990="chromium engrampa kwrite lxrandr pcmanfm-qt spectacle vlc feh kitty spectacle kdenlive gimp audacity obs-studio openra"	# GUI applications
-	FONTS_990="terminus-font ttf-bitstream-vera" 												# Fonts
-	BUILD-SET_990="git archiso git qemu-desktop edk2-ovmf libvirt virt-manager virt-viewer hexedit binwalk android-tools"			# SYN-RTOS Virtualization & Build set
-	SYN-RTOS-990="$BASE_990 $DAEMONS_990 $UTILS_990 $CLI-APP_990 $GUI-APP_990 $FONTS_990 $BUILD-SET_990"					# Mastar Variable
+	BASE_990="base base-devel dosfstools fakeroot gcc linux linux-firmware pacman-contrib reflector sudo zsh"			# Base system"
+	DAEMONS_990="alsa-utils archlinux-xdg-menu dhcpcd dnsmasq hostapd iwd man pulseaudio python-pyalsa" 				# System Daemons
+	UTILS_990="lxrandr obconf-qt pavucontrol-qt tint2conf"										# System Utilties
+	SYS-UI-990="openbox xcompmgr xorg-server xorg-xinit tint2"									# System UI
+	CLI-APP_990="brightnessctl git hdparm htop lshw nano ranger reflector rsync sshfs wget yt-dlp"					# CLI applications
+	GUI-APP_990="audacity chromium engrampa feh gimp kdenlive kitty kwrite obs-studio openra pcmanfm-qt spectacle vlc"		# GUI applications
+	FONTS_990="terminus-font ttf-bitstream-vera" 											# Fonts
+	BUILD-SET_990="android-tools archiso binwalk edk2-ovmf git hexedit libvirt qemu-desktop virt-manager virt-viewer"		# SYN-RTOS Virtualization & Build set
+	SYN-RTOS-990="$BASE_990 $DAEMONS_990 $UTILS_990 $CLI-APP_990 $GUI-APP_990 $FONTS_990 $BUILD-SET_990"				# Mastar Variable
 
 echo  " ___  _   ___ ___ _____ ___    _   ___ "
 echo  "| _ \/_\ / __/ __|_   _| _ \  /_\ | _ |"""
