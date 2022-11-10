@@ -4,7 +4,9 @@ This repository's sole purpose is to contain the full build materials for SYN-RT
 
 # SYN-RTOS-V1
 
-SYN-RTOS-V1 in within itself has never existed, it is instead just a grey concept that has not yet been endoued on us.
+SYN-RTOS-V1 in within itself has never existed, it is instead just a grey concept that has not yet been endoued on us. Only a few reminants such as the MBR 'splash.png' and some scripts have survived and been uploaded.
+
+![Alt text](/Screenshots/syn-rtos-v1.PNG?raw=true)
 
 # SYN-RTOS-V2
 
