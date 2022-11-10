@@ -52,7 +52,9 @@ These may deviate or not even be on the same abstract plain as The Arch Way or K
 # How do I get the X86_64 bootable ISO?
 
 The ISO file can be built following Arch Linux's archiso instructions:
+
 https://wiki.archlinux.org/title/archiso#Build_the_ISO
+
 SYN-RTOS-ARCHISOFILES is the 'profile'. This must be done within Arch Linux, as you will need the archiso package to run the mkarchiso command.
 
 The pre-packaged ISO is not provided. When the vanilla Arch Linux ISO is packaged it's immediatley out-of-date. It makes sense to build and ISO as and when you need it.
