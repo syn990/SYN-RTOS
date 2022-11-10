@@ -35,3 +35,11 @@ These may deviate or not even be on the same abstract plain as The Arch Way or K
 
 
 ![Alt text](/Screenshots/Editing_SYN-RTOS.PNG?raw=true)
+![Alt text](/Screenshots/Openbox_Menu.PNG?raw=true)
+![Alt text](/Screenshots/Pacman_Updates.PNG?raw=true)
+![Alt text](/Screenshots/binwalk_and_analysis_on_ISO.PNG?raw=true)
+![Alt text](/Screenshots/browsing_files_and_running_updates.PNG?raw=true)
+![Alt text](/Screenshots/browsing_files_with_ranger.PNG?raw=true)
+![Alt text](/Screenshots/browsing_web.PNG?raw=true)
+![Alt text](/Screenshots/editing_scripts_and_browsing_files.PNG?raw=true)
+![Alt text](/Screenshots/using_htop.PNG?raw=true)
