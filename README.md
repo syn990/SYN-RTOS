@@ -16,8 +16,8 @@ The goal was at the time, to make a zero-touch, sane, modifiable meta-configurat
 
 SYN-RTOS-V2 ceases simply due to the lack of reproducability and poorly, or not at all in anyway meeting a zero-touch design. It would help reduce manual tasks but only to a varaible degree considering how bespoke hardware and build requirements are.
 
-![Alt text](/Screenshots/SYN-RTOS-V2.1?raw=true)
-![Alt text](/Screenshots/SYN-RTOS-V2.2?raw=true)
+![Alt text](/Screenshots/syn-rtos-v2-1.PNG?raw=true)
+![Alt text](/Screenshots/syn-rtos-v2-2.PNG?raw=true)
 
 # SYN-RTOS-V3 
 
