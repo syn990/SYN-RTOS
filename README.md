@@ -55,8 +55,8 @@ The ISO file can be built following Arch Linux's archiso instructions:
 
 https://wiki.archlinux.org/title/archiso#Build_the_ISO
 
-SYN-RTOS-ARCHISOFILES is the 'profile'. This must be done within Arch Linux, as you will need the archiso package to run the mkarchiso command.
+- SYN-RTOS-ARCHISOFILES is the 'profile'. This must be done within Arch Linux, as you will need the archiso package to run the mkarchiso command.
 
-The pre-packaged ISO is not provided. When the vanilla Arch Linux ISO is packaged it's immediatley out-of-date. It makes sense to build and ISO as and when you need it.
+- The pre-packaged ISO is not provided. When the vanilla Arch Linux ISO is packaged it's immediatley out-of-date. It makes sense to build and ISO as and when you need it.
 
 It's impossible for me to embed a rootkit without it being visible on the public domain for all to see. None of what's on this repository is in a binary format and there is no dodgy code or obfuscated shell scripts. Not including the ISO may be a barrier for entry as you will need to install Arch Linux anyway. This is intentional as you shouldn't be using this system if you are unable to install Arch Linux, and also means there can be no accusations of embedded rootkits or 1337 crackerness.
