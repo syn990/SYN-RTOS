@@ -32,3 +32,6 @@ and 168MB. Perhaps just over 200MB with the graphical enviroment. The operating 
 - 4. Be understood and modifiable to the fullest extent, so that SYN-RTOS is the bootloader for your own vision.
 
 These may deviate or not even be on the same abstract plain as The Arch Way or KISS principles. These are design choices for the sake of SYN-RTOS's current identity (and what it has successfully been for over 5 years). Only SYN-RTOS-V3 attempts to fully complete the ISO and zero-touch deployment methods. Further increasing development speed and testing.
+
+
+![Alt text](/Screenshots/Editing_SYN-RTOS.PNG?raw=true)
