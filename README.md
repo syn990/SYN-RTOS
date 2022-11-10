@@ -16,6 +16,8 @@ The goal was at the time, to make a zero-touch, sane, modifiable meta-configurat
 
 SYN-RTOS-V2 ceases simply due to the lack of reproducability and poorly, or not at all in anyway meeting a zero-touch design. It would help reduce manual tasks but only to a varaible degree considering how bespoke hardware and build requirements are.
 
+![Alt text](/Screenshots/vbox.PNG?raw=true)
+
 # SYN-RTOS-V3 
 
 Version 3 instead is an ambitious attempt to utilise modern utilities provided by Arch Linux such as 'archiso', 'archinstaller', 'pacstrap', 'Openbox' + 'Tint2' + 'xcompmgr', curated dotfiles, custom scripts and images/icons/fonts, pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
