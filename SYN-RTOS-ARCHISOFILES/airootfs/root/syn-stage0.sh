@@ -9,12 +9,13 @@
 # Encryption is a very real possibility to be baked in both the live and
 # persistent enviroment.
 
-loadkeys uk			# Setup the keyboard layout
+loadkeys uk					# Setup the keyboard layout
 timedatectl set-ntp true	# Setup NTP so the time is up-to-date
 
 #  Stale. Also really scary... This is a "parted" script that aggressivley erases
 #  the disks of target /dev/sda which is inaccurate and dangerous to assume.
 
+clear
 echo "____    __    ____  __  .______    __  .__   __.   _______ "
 echo "\   \  /  \  /   / |  | |   _  \  |  | |  \ |  |  /  _____|"
 echo " \   \/    \/   /  |  | |  |_)  | |  | |   \|  | |  |  __  "
@@ -37,40 +38,36 @@ parted --script /dev/sda mkpart primary ext4 201Mib 100%
 	mkfs.vfat -F 32 /dev/sda1
         mkfs.ext4 -F /dev/sda2
         	mount /dev/sda2 /mnt
-        	mkdir /mnt/boot/
-		mount /dev/sda1 /mnt/boot
- 
-echo "     _______.____    ____ .__   __.        .______     .___________.  ______        _______."
-echo "    /       |\   \  /   / |  \ |  |        |   _  \    |           | /  __  \      /       |"
-echo "   |   (----  \   \/   /  |   \|  |  ______|  |_)  |    ---|  |---- |  |  |  |    |   (---- "
-echo "    \   \      \_    _/   |  .    | |______|      /        |  |     |  |  |  |     \   \    "
-echo ".----)   |       |  |     |  |\   |        |  |\  \----.   |  |     |   --'  | .----)   |   "
-echo "|_______/        |__|     |__| \__|        | _|  ._____|   |__|      \______/  |_______/    "
+			mkdir /mnt/boot/
+			mount /dev/sda1 /mnt/boot
 
 # You can add/remove packages in these variables. It's done this way so you can see waht's being installed. The variables are meaningless and pacstrap does not care,
 # It's been done this way so you can see what packages are being installed so you can make sensible decisions about what you want on the result system.
 # Literally, all you need to do is ensure the package name is present and it's a valid package, and pacstrap will install it.
 
-	BASE990"base base-devel dosfstools fakeroot gcc linux linux-firmware pacman-contrib reflector sudo zsh" # Base system"
-	DAEMON990="alsa-utils archlinux-xdg-menu dhcpcd dnsmasq hostapd iwd man pulseaudio python-pyalsa" # System Daemons
-	UTIL990="lxrandr obconf-qt pavucontrol-qt tint2conf" # System Utilties
-	SYS990="openbox xcompmgr xorg-server xorg-xinit tint2" # System UI
-	CLI990="brightnessctl git hdparm htop lshw nano ranger reflector rsync sshfs wget yt-dlp"# CLI applications
-	GUI990="audacity chromium engrampa feh gimp kdenlive kitty kwrite obs-studio openra pcmanfm-qt spectacle vlc" # GUI applications
-	FONT990="terminus-font ttf-bitstream-vera" # Fonts
-	BUILD990="android-tools archiso binwalk edk2-ovmf git hexedit libvirt qemu-desktop virt-manager virt-viewer" # SYN-RTOS Virtualization & Build set
-	SYN-RTOS-990="$BASE990 $DAEMON990 $UTIL990 $CLI990 $GUI990 $FONT990 $BUILD990" # Mastar Variable
+	BASE_CORE_990___="base base-devel dosfstools fakeroot gcc linux linux-firmware pacman-contrib sudo zsh"
+	SYSTEM_CORE_990_="alsa-utils archlinux-xdg-menu dhcpcd dnsmasq hostapd iwd pulseaudio python-pyalsa"
+	CONTROL_CORE_990="lxrandr obconf-qt pavucontrol-qt"
+	WM_CORE_990_____="openbox xcompmgr xorg-server xorg-xinit tint2"
+	CLI_CORE_990____="git htop man nano reflector rsync wget"
+	GUI_CORE_990____="engrampa feh kitty kwrite pcmanfm-qt"
+	FONT_CORE_990___="terminus-font ttf-bitstream-vera"
+	CLI_OPTIONAL_990="android-tools archiso binwalk brightnessctl hdparm hexedit lshw ranger sshfs yt-dlp"	
+	GUI_OPTIONAL_990="audacity chromium gimp kdenlive obs-studio openra spectacle vlc"
+	VM_OPTIONAL_990_="edk2-ovmf libvirt qemu-desktop virt-manager virt-viewer"
+	
+		SYNSTALL="$BASE_CORE_990___ $SYSTEM_CORE_990_ $CONTROL_CORE_990 $WM_CORE_990_____ $CLI_CORE_990____ $GUI_CORE_990____ $FONT_CORE_990___ $CLI_OPTIONAL_990 $GUI_OPTIONAL_990 $VVM_OPTIONAL_990_"
 
 echo  " ___  _   ___ ___ _____ ___    _   ___ "
 echo  "| _ \/_\ / __/ __|_   _| _ \  /_\ | _ |"""
 echo  "|  _/ _ \ (__\__ \ | | |   / / _ \|  _/"
 echo  "|_|/_/ \_\___|___/ |_| |_|_\/_/ \_\_|  "
-echo "Installing packages to the resulting system - this might take a while so go do somthing else or just watch the screen for ages"
+echo "Installing packages to the resulting system."
 
 # If you wanted to add your own packages:
-# Add packages after $SYN-RTOS-990 like this "pacstrap /mnt $SYN-RTOS-990 firefox mixxx libmp3"...
+# Add packages after $SYNSTALL like this "pacstrap /mnt $SYNSTALL firefox mixxx virtualbox some-other-package"
 
-	pacstrap /mnt $SYN-RTOS-990 
+	pacstrap /mnt $SYNSTALL
     
 
 echo  " _______  _______  __    _  _______  _______  _______  _______  _______ "
@@ -80,7 +77,7 @@ echo  "|   | __ |   |___ |       ||   |___ | |_____   |   |  |       ||       |"
 echo  "|   ||  ||    ___||  _    ||    ___||_____  |  |   |  |       ||  _   | "
 echo  "|   |_| ||   |___ | | |   ||   |     _____| |  |   |  |   _   || |_|   |"
 echo  "|_______||_______||_|  |__||___|    |_______|  |___|  |__| |__||_______|"
-# Generate filesystem table with boot information in respect to UUID assignment 
+echo  "Generating filesystem table with boot information in respect to UUID assignment"
 
 	genfstab -U /mnt >> /mnt/etc/fstab 			
 
@@ -89,7 +86,7 @@ echo  " |  _ \ / _ \_   _|  ___|_ _| |   | ____/ ___| "
 echo  " | | | | | | || | | |_   | || |   |  _| \___ \ "
 echo  " | |_| | |_| || | |  _|  | || |___| |___ ___) |"
 echo  " |____/ \___/ |_| |_|   |___|_____|_____|____/ "
-# Move the 1.root_filesystem_overlay materials and cheap boot method across to the result system
+echo  " Copying the 1.root_filesystem_overlay materials to the result system root directory"
 
 	cp -Rv /root/SYN-RTOS-V3/1.root_filesystem_overlay/* /mnt/
 	
@@ -100,5 +97,5 @@ echo "    \   \      \_    _/   |  .    | |______|      /        |  |     |  |  
 echo ".----)   |       |  |     |  |\   |        |  |\  \----.   |  |     |   --'  | .----)   |   "
 echo "|_______/        |__|     |__| \__|        | _|  ._____|   |__|      \______/  |_______/    "
 echo ""
-echo "State Zero Complete - You now need to chroot into the new system to continue building."
+echo "Stage Zero Complete - You now need to arch-chroot into the new system to continue building."
 echo "Assume the root file system was mounted on /mnt, you would need to type ""arch-chroot /mnt"""
