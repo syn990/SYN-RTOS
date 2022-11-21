@@ -44,7 +44,7 @@ The raw ISO is not distributed. It shouldn't be. The source is in the scripts an
 
 https://wiki.archlinux.org/title/archiso#Build_the_ISO
 
-- Arch Linux is officially supported, but it's not impossible to get archiso running on another system. I wouldn't know.
+- Arch Linux is officially supported, but it's not impossible to get archiso running on another system. I wouldn't know. You'll need the archiso package and it's depedencies to build the profile into a bootable ISO.
 
 - Run this as root to produce an ISO. The profile being SYN-RTOS-ARCHISOFILES.
 
