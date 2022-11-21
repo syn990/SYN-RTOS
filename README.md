@@ -44,6 +44,10 @@ The ISO file can be built following Arch Linux's archiso instructions:
 
 https://wiki.archlinux.org/title/archiso#Build_the_ISO
 
+```
+# mkarchiso -v -w /path/to/work_dir -o /path/to/out_dir /path/to/profile/
+```
+
 - SYN-RTOS-ARCHISOFILES is the 'profile'. This must be done within Arch Linux, as you will need the archiso package to run the mkarchiso command.
 
 - The pre-packaged ISO is not provided. When the vanilla Arch Linux ISO is packaged it's immediatley out-of-date. It makes sense to build and ISO as and when you need it.
