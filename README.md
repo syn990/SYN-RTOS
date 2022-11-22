@@ -57,7 +57,7 @@ It's impossible for me to embed a rootkit without it being visible on the public
 # Screenshots of system in use during various stages
 
 ![Alt text](/Screenshots/default-syn-theme.png?raw=true)
-![Alt text](/Screenshots/green-syn-theme.png.PNG?raw=true)
+![Alt text](/Screenshots/green-syn-theme.png?raw=true)
 ![Alt text](/Screenshots/red-syn-theme.png?raw=true)
 ![Alt text](/Screenshots/reddown-syn-theme.png?raw=true)
 ![Alt text](/Screenshots/Openbox_Menu.PNG?raw=true)
