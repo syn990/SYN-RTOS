@@ -12,7 +12,7 @@
     LOCALE_GEN_990="en_GB.UTF-8 UTF-8"                                  # This defines some locale stuff ?
     LOCALE_CONF_990="LANG=en_GB.UTF-8"                                  # This defines some locale stuff ?
     ZONE_INFO990=GB                                                     # This defines some locale stuff ?
-    KEYMAP_990="KEYMAP=uk"                                              # This defines the terminal to use the UK key layout to /etc/vconsole.conf
+#    KEYMAP_990="KEYMAP=uk"                                              # This defines the terminal to use the UK key layout to /etc/vconsole.conf
     ISSUE_NAME_990="SYN-RTOS-V3 - Syntax Real-Time Operating System"    # This defines the OS name to be piped into /etc/issue
     SHELL_CHOICE_990=/bin/zsh                                           # This defines the default shell to use for the useradd command
     
@@ -34,7 +34,7 @@
     touch /etc/locale.gen       && echo $LOCALE_GEN_990                         >> /etc/locale.gen
     locale-gen
     touch /etc/locale.conf      && echo $LOCALE_CONF_990                        >> /etc/locale.conf
-    touch /etc/vconsole.conf    && echo $KEYMAP_990                             >> /etc/vconsole.conf
+#    touch /etc/vconsole.conf    && echo $KEYMAP_990                             >> /etc/vconsole.conf
     touch /etc/hostname         && echo $FINAL_HOSTNAME_990                     >> /etc/hostname
     touch /etc/issue            && echo $ISSUE_NAME_990                         >> /etc/issue
     ln -sf                      /usr/share/zoneinfo/$ZONE_INFO990               /etc/localtime
