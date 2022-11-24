@@ -10,7 +10,10 @@
 # persistent enviroment.
 
 loadkeys uk					# Setup the keyboard layout
-timedatectl set-ntp true	# Setup NTP so the time is up-to-date
+timedatectl set-ntp true			# Setup NTP so the time is up-to-date
+
+systemctl start dhcpcd.service			# Setup DHCP on boot (seems to need manually doing recently, perhaps releng is borked)
+
 
 #  Stale. Also really scary... This is a "parted" script that aggressivley erases
 #  the disks of target /dev/sda which is inaccurate and dangerous to assume.
@@ -33,13 +36,17 @@ echo "If you didn't read the source properly you've probably wiped all your prec
 # This currently wipes sda, without any prompt. We need it to create a device lable as this will help bootctl be more predictable						   
 # It's set to gpt so a different script is needed for MBR setups. 
 
-parted --script /dev/sda mklabel gpt mkpart primary fat32 1Mib 200Mib set 1 boot on
-parted --script /dev/sda mkpart primary ext4 201Mib 100%
-	mkfs.vfat -F 32 /dev/sda1
-        mkfs.ext4 -F /dev/sda2
-        	mount /dev/sda2 /mnt
+	ROOT_DISK_990="/dev/sda"	# Drive to be wiped
+	ROOT_PART_990="/dev/sda2"	# The root partition
+	BOOT_PART_990="/dev/sda1"	# The boot partition
+	
+parted --script $ROOT_DISK_990 mklabel gpt mkpart primary fat32 1Mib 200Mib set 1 boot on
+parted --script $ROOT_DISK_990 mkpart primary ext4 201Mib 100%
+	mkfs.vfat -F 32 $BOOT_PART_990
+        mkfs.ext4 -F $ROOT_PART_990
+        	mount $ROOT_PART_990 /mnt
 			mkdir /mnt/boot/
-			mount /dev/sda1 /mnt/boot
+			mount $BOOT_PART_990 /mnt/boot
  
 echo "     _______.____    ____ .__   __.        .______     .___________.  ______        _______."
 echo "    /       |\   \  /   / |  \ |  |        |   _  \    |           | /  __  \      /       |"
@@ -52,18 +59,18 @@ echo "|_______/        |__|     |__| \__|        | _|  ._____|   |__|      \____
 # It's been done this way so you can see what packages are being installed so you can make sensible decisions about what you want on the result system.
 # Literally, all you need to do is ensure the package name is present and it's a valid package, and pacstrap will install it.
 
-	BASE_CORE_990___="base base-devel dosfstools fakeroot gcc linux linux-firmware pacman-contrib sudo zsh"
-	SYSTEM_CORE_990_="alsa-utils archlinux-xdg-menu dhcpcd dnsmasq hostapd iwd pulseaudio python-pyalsa"
-	CONTROL_CORE_990="lxrandr obconf-qt pavucontrol-qt"
-	WM_CORE_990_____="openbox xcompmgr xorg-server xorg-xinit tint2"
-	CLI_CORE_990____="git htop man nano reflector rsync wget"
-	GUI_CORE_990____="engrampa feh kitty kwrite pcmanfm-qt"
-	FONT_CORE_990___="terminus-font ttf-bitstream-vera"
-	CLI_OPTIONAL_990="android-tools archiso binwalk brightnessctl hdparm hexedit lshw ranger sshfs yt-dlp"	
-	GUI_OPTIONAL_990="audacity chromium gimp kdenlive obs-studio openra spectacle vlc"
-	VM_OPTIONAL_990_="edk2-ovmf libvirt qemu-desktop virt-manager virt-viewer"
+	BASE_990="base base-devel dosfstools fakeroot gcc linux linux-firmware pacman-contrib sudo zsh"
+	SYSTEM_990__="alsa-utils archlinux-xdg-menu dhcpcd dnsmasq hostapd iwd pulseaudio python-pyalsa"
+	CONTROL_990_="lxrandr obconf-qt pavucontrol-qt"
+	WM_990______="openbox xcompmgr xorg-server xorg-xinit tint2"
+	CLI_990_____="git htop man nano reflector rsync wget"
+	GUI_990_____="engrampa feh kitty kwrite pcmanfm-qt"
+	FONT_990____="terminus-font ttf-bitstream-vera"
+	CLI_XTRA_990="android-tools archiso binwalk brightnessctl hdparm hexedit lshw ranger sshfs yt-dlp"	
+	GUI_XTRA_990="audacity chromium gimp kdenlive obs-studio openra spectacle vlc"
+	VM_XTRA_990_="edk2-ovmf libvirt qemu-desktop virt-manager virt-viewer"
 	
-		SYNSTALL="$BASE_CORE_990___ $SYSTEM_CORE_990_ $CONTROL_CORE_990 $WM_CORE_990_____ $CLI_CORE_990____ $GUI_CORE_990____ $FONT_CORE_990___ $CLI_OPTIONAL_990 $GUI_OPTIONAL_990 $VVM_OPTIONAL_990_"
+		SYNSTALL="$BASE_990 $SYSTEM_990__ $CONTROL_990_ $WM_990______ $CLI_990_____ $GUI_990_____ $FONT_990____ $CLI_XTRA_990 $GUI_XTRA_990 $VM_XTRA_990_"
 
 echo  " ___  _   ___ ___ _____ ___    _   ___ "
 echo  "| _ \/_\ / __/ __|_   _| _ \  /_\ | _ |"""
@@ -74,7 +81,11 @@ echo "Installing packages to the resulting system."
 # If you wanted to add your own packages:
 # Add packages after $SYNSTALL like this "pacstrap /mnt $SYNSTALL firefox mixxx virtualbox some-other-package"
 
-	pacstrap /mnt $SYNSTALL
+	pacman -Syy && reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist 	# Unsure why the mirrorlist has broken. I might have removed this for some reason?
+	pacman-key --init									# For some reason the keys seems to fail after packaging an ISO
+	pacman-key --populate archlinux								# This will force pacman to download the correct keys and apply them for the default archlinux repo
+	
+	pacstrap /mnt $SYNSTALL									# This is the pacstrap that combines all the packages in the variables above
     
 echo  " _______  _______  __    _  _______  _______  _______  _______  _______ "
 echo  "|       ||       ||  |  | ||       ||       ||       ||   _   ||  _    |"
