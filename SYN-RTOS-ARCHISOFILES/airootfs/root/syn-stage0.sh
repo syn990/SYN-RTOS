@@ -11,7 +11,6 @@
 
 loadkeys uk					# Setup the keyboard layout
 timedatectl set-ntp true			# Setup NTP so the time is up-to-date
-
 systemctl start dhcpcd.service			# Setup DHCP on boot (seems to need manually doing recently, perhaps releng is borked)
 
 
@@ -81,7 +80,7 @@ echo "Installing packages to the resulting system."
 # If you wanted to add your own packages:
 # Add packages after $SYNSTALL like this "pacstrap /mnt $SYNSTALL firefox mixxx virtualbox some-other-package"
 
-	pacman -Syy && reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist 	# Unsure why the mirrorlist has broken. I might have removed this for some reason?
+	reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist & pacman -Sy 	# Unsure why the mirrorlist has broken. I might have removed this for some reason?
 	pacman-key --init									# For some reason the keys seems to fail after packaging an ISO
 	pacman-key --populate archlinux								# This will force pacman to download the correct keys and apply them for the default archlinux repo
 	
@@ -106,7 +105,7 @@ echo  " |____/ \___/ |_| |_|   |___|_____|_____|____/ "
 echo  " Copying the 1.root_filesystem_overlay materials to the result system root directory"
 
 	ROOTFSOVERLAY990="/root/SYN-RTOS-V3/1.root_filesystem_overlay/*"
-	cp -Rv $ROOTFSOVERLAY990 /mnt/ && clear
+	cp -R $ROOTFSOVERLAY990 /mnt/ && clear
 	echo "Filesystems created"
 	echo "Partitions mounted"
 	echo "Pacstrap completed"
