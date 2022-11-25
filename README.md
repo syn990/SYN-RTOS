@@ -2,7 +2,7 @@
 
 This is completely free and modifiable to the fullest extent and requires next to no effort to install. It allows you to implement any specific features you may need. At it's basics, the directory included "SYN-RTOS-ARCHISOFILES" is a profile for [archiso](https://wiki.archlinux.org/title/archiso)
 
-Welcome. This repository contains the full build materials for SYN-RTOS, and this README.md contains the neccessary infomation to modify 
+Welcome. This repository contains the full build materials for SYN-RTOS, and this README.md contains the neccessary infomation to modify to the extent required, package into a convenient ISO for installation, and also have a pre-written set of scripts and configurations based on your needs. The standard template is a POC system I have been running since 2015, with some users having used a similar system way back in 05' on barebones systems with window managers like Fluxbox and Blackbox.
 
 By design the installer is a collection of text files (no executables) and effectively provides a template to produce your own meta-distribution.
 
