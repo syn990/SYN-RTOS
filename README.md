@@ -1,12 +1,15 @@
-# SYN-RTOS = 'Syntax Real-Time Operating System'.
+#SYN-RTOS = 'Syntax Real-Time Operating System'.
 
-This operating system is completely free and modifiable to the fullest extent and requires next to no effort to install. It allows you to implement any specific features you may need. 
+Welcome, 
+
+This is completely free and modifiable to the fullest extent and requires next to no effort to install. It allows you to implement any specific features you may need.
 
 By design the installer is a collection of text files (no executables) and effectively provides a template to produce your own meta-distribution.
 
 The system downloads packages on-demand each time the installer is run, enabling a fully up-to-date system each time. It is even possible to copy pre-downloaded packages into airootfs with a modified mirrorlist and rebuild the ISO with the packages included locally. 
 
-### SYN-RTOS is an ambitious attempt to utilise modern utilities provided by Arch Linux such as: 
+### SYN-RTOS 
+An ambitious attempt to utilise modern utilities provided by Arch Linux to quickly build a reproducable (Arch Linux derived) bootable ISO, using only offical mirrors and packages with   : 
 
  - [archiso](https://wiki.archlinux.org/title/archiso)   -- Required to build the ISO
  - [pacstrap](https://archlinux.org/packages/core/x86_64/pacman)  -- A feature of 'pacman' that allows installing packages to a seperate root directory
