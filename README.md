@@ -1,4 +1,4 @@
-#SYN-RTOS = 'Syntax Real-Time Operating System'.
+# SYN-RTOS = 'Syntax Real-Time Operating System'.
 
 Welcome, 
 
