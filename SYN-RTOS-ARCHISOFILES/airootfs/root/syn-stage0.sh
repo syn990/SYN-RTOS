@@ -45,7 +45,7 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	parted --script $WIPE_DISK_990 mkpart primary ext4 201Mib 100%
 	mkfs.vfat -F 32 $BOOT_PART_990
         mkfs.ext4 -F $ROOT_PART_990
-        	mount $ROOT_PART_990 ROOT_DATA_990
+        	mount $ROOT_PART_990 $ROOT_DATA_990
 			mkdir $BOOT_DATA_990
 			mount $BOOT_PART_990 $BOOT_DATA_990
  
