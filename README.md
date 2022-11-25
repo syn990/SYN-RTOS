@@ -2,7 +2,7 @@
 
 This repository's sole purpose is to contain the full build materials for SYN-RTOS-V3. Please scroll down to find build instructions and eye-candy.
 
-![Alt text](/Screenshots/syn-front.png?raw=true)
+![Alt text](/Screenshots/syn-latest.png?raw=true)
 
 SYN-RTOS is an ambitious attempt to utilise modern utilities provided by Arch Linux such as archiso, pacstrap, openbox + tint2 + xcompmgr, curated dotfiles, custom scripts and images/icons/fonts, pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
 
@@ -37,6 +37,7 @@ It's impossible for me to embed a rootkit without it being visible on the public
 
 # Screenshots of system in use during various stages
 
+![Alt text](/Screenshots/syn-front.png?raw=true)
 ![Alt text](/Screenshots/default-syn-theme.png?raw=true)
 ![Alt text](/Screenshots/green-syn-theme.png?raw=true)
 ![Alt text](/Screenshots/red-syn-theme.png?raw=true)
