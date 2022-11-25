@@ -2,9 +2,7 @@
 
 This operating system is completely free and modifiable to the fullest extent and requires next to no effort to install.
 
-It allows you full modification to implement any specific features you may need. By design the installer is text based and if modified will effectively provide a template to produce your own meta-distribution.
-
-The system installs itself in a meer couple of minutes and will always be fully up-to-date with packages, these are normally their latest stable versions a few revisions ahead of Windows/Linux packages ensuring you get the latest features and security updates without instability.
+It allows you to implement any specific features you may need. By design the installer is text based and effectively provides a template to produce your own meta-distribution. The system installs will always be fully up-to-date with packages, these are normally their latest stable versions a few revisions ahead of Windows/Linux packages ensuring you get the latest features and security updates without instability.
 
 This repository's sole purpose is to contain the full build materials for SYN-RTOS-V3. Please scroll down to find build instructions and eye-candy.
 
