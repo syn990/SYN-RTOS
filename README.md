@@ -1,9 +1,10 @@
 # SYN-RTOS = 'Syntax Real-Time Operating System'.
 
 This repository's sole purpose is to contain the full build materials for SYN-RTOS-V3. Please scroll down to find build instructions and eye-candy.
-# SYN-RTOS-V3 
 
-SYN-RTOS  is an ambitious attempt to utilise modern utilities provided by Arch Linux such as archiso, pacstrap, openbox + tint2 + xcompmgr, curated dotfiles, custom scripts and images/icons/fonts, pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
+![Alt text](/Screenshots/syn-front.png?raw=true)
+
+SYN-RTOS is an ambitious attempt to utilise modern utilities provided by Arch Linux such as archiso, pacstrap, openbox + tint2 + xcompmgr, curated dotfiles, custom scripts and images/icons/fonts, pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
 
 SYN-RTOS-V3 has these core principles that the resulting system must have.
 
