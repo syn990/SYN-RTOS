@@ -1,21 +1,30 @@
 To install [38;2;23;147;209mSYN-RTOS[0m please contact directly using "william@syntax990.com":
 Find the build materials here: https://github.com/syn990/syn-rtos.git
 
-Check out the current directory after logging in:
+Observe these two scripts in /root/:
 
 - [38;2;23;147;209msyn-stage0.sh[0m
 
-It's goal is to nuke whatever drives detected and dump a bunch of packages and setup the genfstab.
-You can modify the pacstrap lists but anything else might not be useful at this stage.
+Read this script, make suitable ammendments before executing.
+If you run this script without considering it's implications you will destroy data.
+
+It's objective is to prepare the filesystem on storage medium, using the host live
+system to install the required packages listed within the variables in [38;2;23;147;209msyn-stage0.sh[0m
 
 - [38;2;23;147;209msyn-stage1.sh[0m
 
-This must be copied to the new system after running the first script, and then ran within chroot. It'll generate the user
-and important junk.
+Assuming the script has no errors processing live on-the-spot no random jumps in progress
+or glitches or failed commands then [38;2;23;147;209msyn-stage1.sh[0m should be run within the chroot enviroment.
 
-It also sets bootctl as the bootloader, and requires manual creation of the .conf's
-in the EFI directory. You can ommit this line and build your own bootloader from scratch. This needs work...
-
-These may even be merged if we can get around the whole chroot nonsense.
+It's automatically copied over.
 
 [41m [41m [41m [40m [44m [40m [41m [46m [45m [41m [46m [43m [41m [44m [45m [40m [44m [40m [41m [44m [41m [41m [46m [42m [41m [44m [43m [41m [45m [40m [40m [44m [40m [41m [44m [42m [41m [46m [44m [41m [46m [47m [0m
+
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "     _______.____    ____ .__   __.        .______     .___________.  ______        _______."
+echo "    /       |\   \  /   / |  \ |  |        |   _  \    |           | /  __  \      /       |"
+echo "   |   (----  \   \/   /  |   \|  |  ______|  |_)  |    ---|  |---- |  |  |  |    |   (---- "
+echo "    \   \      \_    _/   |  .    | |______|      /        |  |     |  |  |  |     \   \    "
+echo ".----)   |       |  |     |  |\   |        |  |\  \----.   |  |     |   --'  | .----)   |   "
+echo "|_______/        |__|     |__| \__|        | _|  ._____|   |__|      \______/  |_______/    "
+echo "START~~>~~~~~~sh syn-stage0.sh~~~~~>>~~~~arch chroot /mnt/~~~~~>>~~~~sh syn-stage0.sh~~~~END"
