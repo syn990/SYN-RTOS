@@ -1,8 +1,8 @@
 # SYN-RTOS = 'Syntax Real-Time Operating System'.
 
-Welcome, 
+This is completely free and modifiable to the fullest extent and requires next to no effort to install. It allows you to implement any specific features you may need. At it's basics, the directory included "SYN-RTOS-ARCHISOFILES" is a profile for [archiso](https://wiki.archlinux.org/title/archiso)
 
-This is completely free and modifiable to the fullest extent and requires next to no effort to install. It allows you to implement any specific features you may need.
+Welcome. This repository contains the full build materials for SYN-RTOS, and this README.md contains the neccessary infomation to modify 
 
 By design the installer is a collection of text files (no executables) and effectively provides a template to produce your own meta-distribution.
 
@@ -19,8 +19,6 @@ An ambitious attempt to utilise modern utilities provided by Arch Linux to quick
  - Curated Dotfiles                      (Designed to work with the default packages to apply the correct settings out-of-the-box)     
  - Custom Zero-Touch Install Scripts     (currently syn-stage0.sh and syn-stage1.sh which contain sane, modifiable variabes to easily deploy the system.
  - Images. Icons and Fonts                   (Pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
-
-This repository's sole purpose is to contain the full build materials for SYN-RTOS-V3. Please scroll down to find build instructions and eye-candy.
 
 ```
 # nano syn-stage0.sh
