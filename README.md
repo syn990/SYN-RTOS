@@ -1,29 +1,9 @@
 # SYN-RTOS = 'Syntax Real-Time Operating System'.
 
 This repository's sole purpose is to contain the full build materials for SYN-RTOS-V3. Please scroll down to find build instructions and eye-candy.
-
-# SYN-RTOS-V1
-
-SYN-RTOS-V1 in within itself has never existed, it is instead just a grey concept that has not yet been endoued on us. Only a few reminants such as the MBR 'splash.png' and some scripts have survived and been uploaded.
-
-![Alt text](/Screenshots/syn-rtos-v1.PNG?raw=true)
-
-# SYN-RTOS-V2
-
-Version 2 existed as a bootstrapper of sorts, for a vanilla image of Arch Linux, requiring multiple inputs from a human as well as certain specfic un-documented requirements for reaching the resulting system. The 'git' package was neccessary to source the scripts and template dotfiles. These operations would instruct the live Arch Linux system to hopefully deploy a complete, reproducable system, live, without needing to deploy an image or physically clone data. The scripts were just about functional, design issues that made chroot impossible, manually needing to install git in a live enviroment was not always possible as the live disk may run out of storage.
-
-Other methods such as transfering the build materials with a USB, mounting and dealing with additional filesystem operations were required. This would introduce inconsistencies with how partitioning would result. This was cumbersome and not sustainable given the potential changes from Arch and the increasing likleyhood my script would simply break.
-
-The goal was at the time, to make a zero-touch, sane, modifiable meta-configuration of Arch Linux, however multiple projects with varying complexity have acheived this in a better way, and go against the spirit of Arch Linux to some degree. Now the latest 'arch-installer' package has to some degree done the heavy lifting, it's possible this Arch Linux endorsed feature may help.
-
-SYN-RTOS-V2 ceases simply due to the lack of reproducability and poorly, or not at all in anyway meeting a zero-touch design. It would help reduce manual tasks but only to a varaible degree considering how bespoke hardware and build requirements are.
-
-![Alt text](/Screenshots/syn-rtos-v2-1.PNG?raw=true)
-![Alt text](/Screenshots/syn-rtos-v2-2.PNG?raw=true)
-
 # SYN-RTOS-V3 
 
-Version 3 instead is an ambitious attempt to utilise modern utilities provided by Arch Linux such as 'archiso', 'archinstaller', 'pacstrap', 'Openbox' + 'Tint2' + 'xcompmgr', curated dotfiles, custom scripts and images/icons/fonts, pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
+SYN-RTOS  is an ambitious attempt to utilise modern utilities provided by Arch Linux such as archiso, pacstrap, openbox + tint2 + xcompmgr, curated dotfiles, custom scripts and images/icons/fonts, pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
 
 SYN-RTOS-V3 has these core principles that the resulting system must have.
 
@@ -68,3 +48,22 @@ It's impossible for me to embed a rootkit without it being visible on the public
 ![Alt text](/Screenshots/browsing_web.PNG?raw=true)
 ![Alt text](/Screenshots/editing_scripts_and_browsing_files.PNG?raw=true)
 ![Alt text](/Screenshots/using_htop.PNG?raw=true)
+
+# SYN-RTOS-V1
+
+SYN-RTOS-V1 in within itself has never existed, it is instead just a grey concept that has not yet been endoued on us. Only a few reminants such as the MBR 'splash.png' and some scripts have survived and been uploaded.
+
+![Alt text](/Screenshots/syn-rtos-v1.PNG?raw=true)
+
+# SYN-RTOS-V2
+
+Version 2 existed as a bootstrapper of sorts, for a vanilla image of Arch Linux, requiring multiple inputs from a human as well as certain specfic un-documented requirements for reaching the resulting system. The 'git' package was neccessary to source the scripts and template dotfiles. These operations would instruct the live Arch Linux system to hopefully deploy a complete, reproducable system, live, without needing to deploy an image or physically clone data. The scripts were just about functional, design issues that made chroot impossible, manually needing to install git in a live enviroment was not always possible as the live disk may run out of storage.
+
+Other methods such as transfering the build materials with a USB, mounting and dealing with additional filesystem operations were required. This would introduce inconsistencies with how partitioning would result. This was cumbersome and not sustainable given the potential changes from Arch and the increasing likleyhood my script would simply break.
+
+The goal was at the time, to make a zero-touch, sane, modifiable meta-configuration of Arch Linux, however multiple projects with varying complexity have acheived this in a better way, and go against the spirit of Arch Linux to some degree. Now the latest 'arch-installer' package has to some degree done the heavy lifting, it's possible this Arch Linux endorsed feature may help.
+
+SYN-RTOS-V2 ceases simply due to the lack of reproducability and poorly, or not at all in anyway meeting a zero-touch design. It would help reduce manual tasks but only to a varaible degree considering how bespoke hardware and build requirements are.
+
+![Alt text](/Screenshots/syn-rtos-v2-1.PNG?raw=true)
+![Alt text](/Screenshots/syn-rtos-v2-2.PNG?raw=true)
