@@ -37,7 +37,7 @@ You may have to enable DHCP if it does not work out the box (this is a new probl
 
 ![Alt text](/Screenshots/syn-latest.png?raw=true)
 
-SYN-RTOS-V3 has these core principles that the resulting system must have.
+### SYN-RTOS-V3 has these core principles that the resulting system must have.
 
 - 1. The system on Idle must use less than 300MB of memory. Typical values range between 129MB
 and 168MB. Perhaps just over 200MB with the graphical enviroment. The operating system must have very little memory overhead.
@@ -50,7 +50,7 @@ and 168MB. Perhaps just over 200MB with the graphical enviroment. The operating 
 
 These may deviate or not even be on the same abstract plain as The Arch Way or KISS principles. These are design choices for the sake of SYN-RTOS's current identity (and what it has successfully been for over 5 years). Only SYN-RTOS-V3 attempts to fully complete the ISO and zero-touch deployment methods. Further increasing development speed and testing.
 
-# How do I get the X86_64 bootable ISO?
+## How do I get the X86_64 bootable ISO?
 
 The raw ISO is not distributed. It shouldn't be. The source is in the scripts and you can produce an up-to-date live system on-the-spot. You can replace packages on-the-fly without transfer of any packages or manual traversal operations. The source is the respositories specified in pacman's mirrorlist and the packages specified in syn-stage0.sh. You can read every line and see for yourself. The archiso project, as well as all the developers for all packages included take the credit, as SYN-RTOS on a fudermental level is a custom archiso profile with dotfiles pre-included in the installation media.
 
