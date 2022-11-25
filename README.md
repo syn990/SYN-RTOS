@@ -4,7 +4,7 @@ This operating system is completely free and modifiable to the fullest extent an
 
 It allows you to implement any specific features you may need. By design the installer is text based and effectively provides a template to produce your own meta-distribution. The system installs will always be fully up-to-date with packages, these are normally their latest stable versions a few revisions ahead of Windows/Linux packages ensuring you get the latest features and security updates without instability.
 
-SYN-RTOS is an ambitious attempt to utilise modern utilities provided by Arch Linux such as: 
+### SYN-RTOS is an ambitious attempt to utilise modern utilities provided by Arch Linux such as: 
 
  - [archiso](https://wiki.archlinux.org/title/archiso)   -- Required to build the ISO
  - [pacstrap](https://archlinux.org/packages/core/x86_64/pacman)  -- A feature of 'pacman' that allows installing packages to a seperate root directory
