@@ -1,17 +1,21 @@
 #!/bin/sh
 
-# Read this script, make suitable ammendments before executing.
-# If you run this script without considering it's implications you wil destroy your system.
+# Actually read this script, make changes before running it, and understand each line of code before committing yourself to a build.
+# If you lack the understanding or glaze over it, you could destroy your existing system.
 
 # Future ambitions include setting up non-standard file-system such as xfs, zfs 
 # or btrfs for block-device backups instead of individual files.
 
-# Encryption is a real possibility to be baked in both the live and
+# Encryption is a very real possibility to be baked in both the live and
 # persistent enviroment.
 
 	loadkeys uk								# Setup the keyboard layout
 	timedatectl set-ntp true				# Setup NTP so the time is up-to-date
 	systemctl start dhcpcd.service			# Setup DHCP on boot (seems to need manually doing recently, perhaps releng is borked)
+
+
+#  Stale. Also really scary... This is a "parted" script that aggressivley erases
+#  the disks of target /dev/sda which is inaccurate and dangerous to assume.
 
 	clear
 
@@ -90,10 +94,10 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 	reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist 
 	
-		pacman -Sy			#DUPLICATE
-		pacman-key --init
-		pacman-key --populate archlinux						
-		pacman -Sy			#DUPLICATE
+		pacman -Sy											# DUPLICATE
+		pacman-key --init									# Why are the keys broken
+		pacman-key --populate archlinux						# Why are the keys broken
+		pacman -Sy											# DUPLICATE
 	
 	pacstrap /mnt $SYNSTALL									# This is the pacstrap that combines all the packages in the variables above
 
@@ -111,7 +115,7 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	genfstab -U /mnt >> /mnt/etc/fstab 			
 
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo  "  ____   ___ _____ _____ ___ _     _____ ____  "
 echo  " |  _ \ / _ \_   _|  ___|_ _| |   | ____/ ___| "
 echo  " | | | | | | || | | |_   | || |   |  _| \___ \ "
@@ -122,7 +126,9 @@ echo  " Copying the 1.root_filesystem_overlay materials to the result system roo
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 	ROOTFSOVERLAY990="/root/SYN-RTOS-V3/1.root_filesystem_overlay/*"
+
 	cp -R $ROOTFSOVERLAY990 /mnt/
+	cp /root/syn-stage1.sh /mnt/root/syn-stage1.sh
 
 	clear
 
@@ -142,4 +148,4 @@ echo "-	Partitions mounted"
 echo "-	Pacstrap completed"
 echo "-	Fstab generated"
 echo "-	cp -R $ROOTFSOVERLAY990 /mnt/ was successful"
-	
+echo "-	cp /root/syn-stage1.sh /mnt/root/syn-stage1.sh was successful"
