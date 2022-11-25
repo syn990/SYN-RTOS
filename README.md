@@ -29,10 +29,13 @@ This will install all packages and make the system ready for chroot. From there 
 ```
 Assuming there was no error it's safe to reboot into the new system.
 
+You may have to enable DHCP if it does not work out the box (this is a new problem which I will eventually fix)
+
+```
+# systemctl start dhcpcd.service
+```
 
 ![Alt text](/Screenshots/syn-latest.png?raw=true)
-
-SYN-RTOS is an ambitious attempt to utilise modern utilities provided by Arch Linux such as archiso, pacstrap, openbox + tint2 + xcompmgr, curated dotfiles, custom scripts and images/icons/fonts, pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
 
 SYN-RTOS-V3 has these core principles that the resulting system must have.
 
