@@ -1,21 +1,17 @@
 #!/bin/sh
 
-# Actually read this script, make changes before running it, and understand each line of code before committing yourself to a build.
-# If you lack the understanding or glaze over it, you could destroy your existing system.
+# Read this script, make suitable ammendments before executing.
+# If you run this script without considering it's implications you wil destroy your system.
 
 # Future ambitions include setting up non-standard file-system such as xfs, zfs 
 # or btrfs for block-device backups instead of individual files.
 
-# Encryption is a very real possibility to be baked in both the live and
+# Encryption is a real possibility to be baked in both the live and
 # persistent enviroment.
 
 	loadkeys uk								# Setup the keyboard layout
-	timedatectl set-ntp true				# Setup NTP so the time is up-to-date
-	systemctl start dhcpcd.service			# Setup DHCP on boot (seems to need manually doing recently, perhaps releng is borked)
-
-
-#  Stale. Also really scary... This is a "parted" script that aggressivley erases
-#  the disks of target /dev/sda which is inaccurate and dangerous to assume.
+	timedatectl set-ntp true						# Setup NTP so the time is up-to-date
+	systemctl start dhcpcd.service						# Setup DHCP on boot (seems to need manually doing recently, perhaps releng is borked)
 
 	clear
 
@@ -39,17 +35,19 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # This currently wipes sda, without any prompt. We need it to create a device lable as this will help bootctl be more predictable						   
 # It's set to gpt so a different script is needed for MBR setups. 
 
-	ROOT_DISK_990="/dev/sda"	# Drive to be wiped
-	ROOT_PART_990="/dev/sda2"	# The root partition
+	WIPE_DISK_990="/dev/sda"	# Drive to be wiped - The main storage medium
 	BOOT_PART_990="/dev/sda1"	# The boot partition
-	
-	parted --script $ROOT_DISK_990 mklabel gpt mkpart primary fat32 1Mib 200Mib set 1 boot on
-	parted --script $ROOT_DISK_990 mkpart primary ext4 201Mib 100%
+	ROOT_PART_990="/dev/sda2"	# The root partition
+	BOOT_DATA_990="/mnt/boot"	# The boot directory
+	ROOT_DATA_990="/mnt/"		# The root directory
+
+	parted --script $WIPE_DISK_990 mklabel gpt mkpart primary fat32 1Mib 200Mib set 1 boot on
+	parted --script $WIPE_DISK_990 mkpart primary ext4 201Mib 100%
 	mkfs.vfat -F 32 $BOOT_PART_990
         mkfs.ext4 -F $ROOT_PART_990
-        	mount $ROOT_PART_990 /mnt
-			mkdir /mnt/boot/
-			mount $BOOT_PART_990 /mnt/boot
+        	mount $ROOT_PART_990 ROOT_DATA_990
+			mkdir $BOOT_DATA_990
+			mount $BOOT_PART_990 $BOOT_DATA_990
  
 echo "     _______.____    ____ .__   __.        .______     .___________.  ______        _______."
 echo "    /       |\   \  /   / |  \ |  |        |   _  \    |           | /  __  \      /       |"
@@ -94,10 +92,10 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 	reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist 
 	
-		pacman -Sy											# DUPLICATE
-		pacman-key --init									# Why are the keys broken
-		pacman-key --populate archlinux						# Why are the keys broken
-		pacman -Sy											# DUPLICATE
+		pacman -Sy			#DUPLICATE
+		pacman-key --init
+		pacman-key --populate archlinux						
+		pacman -Sy			#DUPLICATE
 	
 	pacstrap /mnt $SYNSTALL									# This is the pacstrap that combines all the packages in the variables above
 
@@ -115,7 +113,7 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	genfstab -U /mnt >> /mnt/etc/fstab 			
 
-	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo  "  ____   ___ _____ _____ ___ _     _____ ____  "
 echo  " |  _ \ / _ \_   _|  ___|_ _| |   | ____/ ___| "
 echo  " | | | | | | || | | |_   | || |   |  _| \___ \ "
@@ -126,10 +124,10 @@ echo  " Copying the 1.root_filesystem_overlay materials to the result system roo
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 	ROOTFSOVERLAY990="/root/SYN-RTOS-V3/1.root_filesystem_overlay/*"
-
-	cp -R $ROOTFSOVERLAY990 /mnt/
-	cp /root/syn-stage1.sh /mnt/root/syn-stage1.sh
-
+	
+	cp -R $ROOTFSOVERLAY990 /mnt/					# Copy these files to the root filesystem.
+	cp -R /root/syn-stage1.sh /mnt/root/syn-stage1.sh		# Copy the stage one script to the new root home directory.
+	
 	clear
 
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -141,11 +139,16 @@ echo ".----)   |       |  |     |  |\   |        |  |\  \----.   |  |     |   --
 echo "|_______/        |__|     |__| \__|        | _|  ._____|   |__|      \______/  |_______/    "
 echo ""
 echo "Stage Zero Complete - You now need to arch-chroot into the new system to continue building."
-echo "Assume the root file system was mounted on /mnt, you would need to type ""arch-chroot /mnt"""
+echo ""
+echo "The root file system was mounted on $ROOT_DATA_990, change the root directory:
+echo ""arch-chroot /mnt"""
+echo ""
+echo "Once that is done you will need to run syn-stage1.sh"
+echo "Ensure you make ammendments to the variables in the script to ensure the intended result system"
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "-	Filesystems created"
 echo "-	Partitions mounted"
 echo "-	Pacstrap completed"
 echo "-	Fstab generated"
 echo "-	cp -R $ROOTFSOVERLAY990 /mnt/ was successful"
-echo "-	cp /root/syn-stage1.sh /mnt/root/syn-stage1.sh was successful"
+	
