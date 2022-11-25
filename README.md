@@ -1,12 +1,14 @@
 # SYN-RTOS = 'Syntax Real-Time Operating System'.
 
-This is completely free and modifiable to the fullest extent and requires next to no effort to install. It allows you to implement any specific features you may need. At it's basics, the directory included "SYN-RTOS-ARCHISOFILES" is a profile for [archiso](https://wiki.archlinux.org/title/archiso)
+This is completely free and modifiable to the fullest extent and requires next to no effort to install. 
 
-Welcome. This repository contains the full build materials for SYN-RTOS, and this README.md contains the neccessary infomation to modify to the extent required, package into a convenient ISO for installation, and also have a pre-written set of scripts and configurations based on your needs. The standard template is a POC system I have been running since 2015, with some users having used a similar system way back in 05' on barebones systems with window managers like Fluxbox and Blackbox.
+Welcome. This repository contains the full build materials for SYN-RTOS, and this text contains the neccessary infomation to modify to the extent required, package into a convenient ISO for installation, and also have a pre-written set of scripts and configurations based on your needs. The standard template is a POC system I have been running since 2015, with some users having used a similar system way back in 05' on barebones systems with [Window Managers](https://en.wikipedia.org/wiki/Window_manager) like [Fluxbox](http://fluxbox.org/) and [Blackbox](https://en.wikipedia.org/wiki/Blackbox).
 
-By design the installer is a collection of text files (no executables) and effectively provides a template to produce your own meta-distribution.
+It allows you to implement any specific features you may need. At it's basics, the directory included "SYN-RTOS-ARCHISOFILES" is a profile for [archiso](https://wiki.archlinux.org/title/archiso). By design the installer is a collection of text files (no executables) and effectively provides a template to produce your own [Meta-Distribution](https://wiki.c2.com/?MetaDistribution) derived from Arch Linux.
 
-The system downloads packages on-demand each time the installer is run, enabling a fully up-to-date system each time. It is even possible to copy pre-downloaded packages into airootfs with a modified mirrorlist and rebuild the ISO with the packages included locally. 
+The system uses [pacman](https://archlinux.org/packages/core/x86_64/pacman) to obtain packages on-demand each time the installer is run, enabling a fully up-to-date system each time. It is even possible to copy pre-downloaded packages into airootfs with a modified mirrorlist and rebuild the ISO with the packages included locally.
+
+Finally template files are placed on the root directory, most importantly the template dotfiles placed in /etc/skel/ which are the basis for how the UI and system interactions operate. This can be adapted / ommitted / replaced with your intended functions. Effectivley SYN-RTOS is Arch Linux with my dotfiles and this build script.
 
 ### SYN-RTOS 
 An ambitious attempt to utilise modern utilities provided by Arch Linux to quickly build a reproducable (Arch Linux derived) bootable ISO, using only offical mirrors and packages with   : 
