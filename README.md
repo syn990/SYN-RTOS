@@ -18,10 +18,10 @@ SYN-RTOS is an ambitious attempt to utilise modern utilities provided by Arch Li
 This repository's sole purpose is to contain the full build materials for SYN-RTOS-V3. Please scroll down to find build instructions and eye-candy.
 
 ```
-# nano syn-stage0.sh # Edit the text file before running the script
-# sh syn-stage0.sh   # Run the script
+# nano syn-stage0.sh
+# sh syn-stage0.sh
 ```
-This will install all packages and make the system ready for chroot. From there the final script syn-stage1.sh is copied over and ready to be executed.
+Take the time to modify the script before running it. When run, the final script syn-stage1.sh is copied over and ready to be executed.
 
 ```
 # nano syn-stage1.sh # Edit the text file before running the script
