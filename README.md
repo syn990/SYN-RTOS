@@ -17,6 +17,19 @@ SYN-RTOS is an ambitious attempt to utilise modern utilities provided by Arch Li
 
 This repository's sole purpose is to contain the full build materials for SYN-RTOS-V3. Please scroll down to find build instructions and eye-candy.
 
+```
+# nano syn-stage0.sh # Edit the text file before running the script
+# sh syn-stage0.sh   # Run the script
+```
+This will install all packages and make the system ready for chroot. From there the final script syn-stage1.sh is copied over and ready to be executed.
+
+```
+# nano syn-stage1.sh # Edit the text file before running the script
+# sh syn-stage1.sh   # Run the script
+```
+Assuming there was no error it's safe to reboot into the new system.
+
+
 ![Alt text](/Screenshots/syn-latest.png?raw=true)
 
 SYN-RTOS is an ambitious attempt to utilise modern utilities provided by Arch Linux such as archiso, pacstrap, openbox + tint2 + xcompmgr, curated dotfiles, custom scripts and images/icons/fonts, pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
