@@ -4,6 +4,17 @@ This operating system is completely free and modifiable to the fullest extent an
 
 It allows you to implement any specific features you may need. By design the installer is text based and effectively provides a template to produce your own meta-distribution. The system installs will always be fully up-to-date with packages, these are normally their latest stable versions a few revisions ahead of Windows/Linux packages ensuring you get the latest features and security updates without instability.
 
+SYN-RTOS is an ambitious attempt to utilise modern utilities provided by Arch Linux such as: 
+
+ - archiso
+ - pacstrap
+ - openbox
+ - tint2 
+ - xcompmgr
+ - Curated Dotfiles
+ - Custom Zero-Touch Install Scripts
+ - Images/Icons/Fonts, pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
+
 This repository's sole purpose is to contain the full build materials for SYN-RTOS-V3. Please scroll down to find build instructions and eye-candy.
 
 ![Alt text](/Screenshots/syn-latest.png?raw=true)
