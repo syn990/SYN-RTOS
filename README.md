@@ -7,13 +7,13 @@ It allows you to implement any specific features you may need. By design the ins
 SYN-RTOS is an ambitious attempt to utilise modern utilities provided by Arch Linux such as: 
 
  - [archiso](https://wiki.archlinux.org/title/archiso)   -- Required to build the ISO
- - pacstrap  -- https://archlinux.org/packages/core/x86_64/pacman/  -- A feature of 'pacman' that allows installing packages to a seperate root directory
- - openbox   -- http://openbox.org/wiki/Main_Page                   -- The Window Manager
- - tint2     -- https://gitlab.com/o9000/tint2                      -- The panel, since Openbox and all other GUI's panel suck
- - xcompmgr  -- https://github.com/freedesktop/xcompmgr             -- An oldschool, limited compositor for drop-shadows and transparency
+ - [pacstrap](https://archlinux.org/packages/core/x86_64/pacman)  -- A feature of 'pacman' that allows installing packages to a seperate root directory
+ - [openbox](http://openbox.org/wiki/Main_Page)                   -- The Window Manager
+ - [tint2]9https://gitlab.com/o9000/tint2)                      -- The panel, since Openbox and all other GUI's panel suck
+ - [xcompmgr](https://github.com/freedesktop/xcompmgr)             -- An oldschool, limited compositor for drop-shadows and transparency
  - Curated Dotfiles                      (Designed to work with the default packages to apply the correct settings out-of-the-box)     
  - Custom Zero-Touch Install Scripts     (currently syn-stage0.sh and syn-stage1.sh which contain sane, modifiable variabes to easily deploy the system.
- - Images/Icons/Fonts.                   (Pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
+ - Images. Icons and Fonts                   (Pertaining the graphical look-and-feel, the system shell and enviroment, as well as it's terminal/command dialect.
 
 This repository's sole purpose is to contain the full build materials for SYN-RTOS-V3. Please scroll down to find build instructions and eye-candy.
 
