@@ -6,7 +6,7 @@ Welcome to the SYN-RTOS repository! Inside, you will find all of the necessary m
 
 It allows you to implement any specific features you may need. At it's basics, the directory included "SYN-RTOS-ARCHISOFILES" is a profile for [archiso](https://wiki.archlinux.org/title/archiso). By design the installer is a collection of text files (no executables) and effectively provides a template to produce your own [Meta-Distribution](https://wiki.c2.com/?MetaDistribution) derived from Arch Linux.
 
-The system uses [pacman](https://archlinux.org/packages/core/x86_64/pacman)to obtain packages on demand each time the installer is run, ensuring that the system is always fully up-to-date. Additionally, it is possible to copy pre-downloaded packages into the airootfs directory, modify the mirrorlist, and rebuild the ISO with the included local packages. This allows for even more flexibility and customization in the installation process.
+The system uses [pacman](https://archlinux.org/packages/core/x86_64/pacman) to obtain packages on demand each time the installer is run, ensuring that the system is always fully up-to-date. Additionally, it is possible to copy pre-downloaded packages into the airootfs directory, modify the mirrorlist, and rebuild the ISO with the included local packages. This allows for even more flexibility and customization in the installation process.
 
 Finally template files are placed on the root directory, most importantly the template dotfiles placed in /etc/skel/ which are the basis for how the UI and system interactions operate. This can be adapted / ommitted / replaced with your intended functions. Effectivley SYN-RTOS is Arch Linux with my dotfiles and this build script.
 
