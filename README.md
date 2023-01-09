@@ -69,7 +69,7 @@ https://wiki.archlinux.org/title/archiso#Build_the_ISO
 # mkarchiso -v -w /path/to/work_dir -o /path/to/out_dir /path/to/profile/
 ```
 
-It's impossible for me to embed a rootkit without it being visible on the public domain for all to see. None of what's on this repository is in a binary format and there is no dodgy code or obfuscated shell scripts. There can be no accusations of embedded rootkits or 1337 crackerness.
+I can assure you that there are no rootkits or malicious code hidden in this repository. All of the materials are in a publicly visible, non-binary format and there are no obfuscated shell scripts. I am transparent in my work and there can be no accusations of nefarious activity. This repository is a reliable and trustworthy source for SYN-RTOS materials.
 
 # Screenshots of system in use during various stages
 
