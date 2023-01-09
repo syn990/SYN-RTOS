@@ -2,11 +2,11 @@
 
 This is completely free and modifiable to the fullest extent and requires next to no effort to install. 
 
-Welcome. This repository contains the full build materials for SYN-RTOS, and this text contains the neccessary infomation to modify to the extent required, package into a convenient ISO for installation, and also have a pre-written set of scripts and configurations based on your needs. The standard template is a POC system I have been running since 2015, with some users having used a similar system way back in 05' on barebones systems with [Window Managers](https://en.wikipedia.org/wiki/Window_manager) like [Fluxbox](http://fluxbox.org/) and [Blackbox](https://en.wikipedia.org/wiki/Blackbox).
+Welcome to the SYN-RTOS repository! Inside, you will find all of the necessary materials to modify SYN-RTOS to your specific needs, package it into a convenient ISO for installation, and utilize a set of pre-written scripts and configurations. The standard template is based on a proof-of-concept system that I have been using since 2015, and some users have been utilizing similar systems as far back as 2005 with window managers like Fluxbox and Blackbox on barebones systems. This repository has everything you need to get started with SYN-RTOS. 
 
 It allows you to implement any specific features you may need. At it's basics, the directory included "SYN-RTOS-ARCHISOFILES" is a profile for [archiso](https://wiki.archlinux.org/title/archiso). By design the installer is a collection of text files (no executables) and effectively provides a template to produce your own [Meta-Distribution](https://wiki.c2.com/?MetaDistribution) derived from Arch Linux.
 
-The system uses [pacman](https://archlinux.org/packages/core/x86_64/pacman) to obtain packages on-demand each time the installer is run, enabling a fully up-to-date system each time. It is even possible to copy pre-downloaded packages into airootfs with a modified mirrorlist and rebuild the ISO with the packages included locally.
+The system uses [pacman](https://archlinux.org/packages/core/x86_64/pacman)to obtain packages on demand each time the installer is run, ensuring that the system is always fully up-to-date. Additionally, it is possible to copy pre-downloaded packages into the airootfs directory, modify the mirrorlist, and rebuild the ISO with the included local packages. This allows for even more flexibility and customization in the installation process.
 
 Finally template files are placed on the root directory, most importantly the template dotfiles placed in /etc/skel/ which are the basis for how the UI and system interactions operate. This can be adapted / ommitted / replaced with your intended functions. Effectivley SYN-RTOS is Arch Linux with my dotfiles and this build script.
 
@@ -53,7 +53,7 @@ and 168MB. Perhaps just over 200MB with the graphical enviroment. The operating 
 
 - 4. Be understood and modifiable to the fullest extent, so that SYN-RTOS is the bootloader for your own vision.
 
-These may deviate or not even be on the same abstract plain as The Arch Way or KISS principles. These are design choices for the sake of SYN-RTOS's current identity (and what it has successfully been for over 5 years). Only SYN-RTOS-V3 attempts to fully complete the ISO and zero-touch deployment methods. Further increasing development speed and testing.
+The design choices for SYN-RTOS may differ from the Arch Way or KISS principles. However, these choices have contributed to SYN-RTOS's current identity and success over the past 5 years. SYN-RTOS-V3 is the only version that fully integrates ISO and zero-touch deployment methods, which significantly improves development speed and testing. Please note that these design choices are specific to SYN-RTOS and may not be applicable to other systems.
 
 ## How do I get the X86_64 bootable ISO?
 
