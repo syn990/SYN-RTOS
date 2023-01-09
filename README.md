@@ -49,7 +49,7 @@ and 168MB. Perhaps just over 200MB with the graphical enviroment. The operating 
 
 - 2. Be very kind to the CPU and do not ask for much on Idle.
 
-- 3. Login directly to a tty. The graphical system will not be wrapped into an xorg-powered login UI. The user-centric nature of the system, and performance requirement to maintain the login UI, session management, multiple accounts, graphical components required during boot, are against principles 2 therefore not recreating an abstract login mechanism is a huge part of why this is possible.
+- 3. SYN-RTOS prioritizes performance by using a tty login instead of a graphical login UI. This helps to minimize overhead and allows for a faster boot process without compromising efficiency. The decision to use a tty aligns with our principles and helps us avoid the need to maintain a login UI, manage sessions, support multiple accounts, and load graphical components during boot.
 
 - 4. Be understood and modifiable to the fullest extent, so that SYN-RTOS is the bootloader for your own vision.
 
