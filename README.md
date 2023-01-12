@@ -26,8 +26,7 @@ An ambitious attempt to utilise modern utilities provided by Arch Linux to quick
 # nano syn-stage0.sh
 # sh syn-stage0.sh
 ```
-Take the time to modify the script before running it. When run, the final script syn-stage1.sh is copied over and ready to be executed.
-
+Before running syn-stage0.sh, take the time to make any necessary modifications. Upon execution, the final script syn-stage1.sh will be copied over and ready for use, as demonstrated below.
 ```
 # nano syn-stage1.sh # Edit the text file before running the script
 # sh syn-stage1.sh   # Run the script
