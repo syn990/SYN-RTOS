@@ -31,10 +31,7 @@ Before running syn-stage0.sh, take the time to make any necessary modifications.
 # nano syn-stage1.sh # Edit the text file before running the script
 # sh syn-stage1.sh   # Run the script
 ```
-Assuming there was no error it's safe to reboot into the new system.
-
-You may have to enable DHCP if it does not work out the box (this is a new problem which I will eventually fix)
-
+If no errors were encountered, it's safe to reboot into the new system. Note that DHCP may need to be manually enabled if it doesn't work out of the box, this is an issue that is currently being investigated, it is uncertain which package is causing the problem. However, it is possible that rebuilding the ISO later that month may yield different results.
 ```
 # systemctl start dhcpcd.service
 ```
