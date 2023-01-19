@@ -1,6 +1,6 @@
 # SYN-RTOS = 'Syntax Real-Time Operating System'.
 
-This is completely free and modifiable to the fullest extent and requires next to no effort to install. 
+<sup><sub>This is completely free and modifiable to the fullest extent and requires next to no effort to install. 
 
 Welcome to the SYN-RTOS repository! Inside, you will find all of the necessary materials to modify SYN-RTOS to your specific needs, package it into a convenient ISO for installation, and utilize a set of pre-written scripts and configurations. The standard template is based on a proof-of-concept system that has been in use since 2015, and some users have been utilizing similar systems as far back as 2005 with window managers like Fluxbox and Blackbox on minimal systems. This repository contains all necessary components and instructions to build, install and begin using SYN-RTOS."
 
@@ -9,7 +9,7 @@ Welcome to the SYN-RTOS repository! Inside, you will find all of the necessary m
 The system uses [pacman](https://archlinux.org/packages/core/x86_64/pacman) to obtain packages on demand each time the installer is run, ensuring that the system is always fully up-to-date. Additionally, it is possible to copy pre-downloaded packages into the airootfs directory, modify the mirrorlist, and rebuild the ISO with the included local packages. This allows for even more flexibility and customization in the installation process.
 
 Finally template files are placed on the root directory, most importantly the template dotfiles placed in /etc/skel/ which are the basis for how the UI and system interactions operate. This can be adapted / ommitted / replaced with your intended functions. Effectivley SYN-RTOS is Arch Linux with my dotfiles and this build script.
-
+</sup></sub>
 ### SYN-RTOS 
 An ambitious attempt to utilise modern utilities provided by Arch Linux to quickly build a reproducable (Arch Linux derived) bootable ISO, using only offical mirrors and packages with   : 
 
