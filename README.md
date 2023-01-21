@@ -51,7 +51,9 @@ The design choices for SYN-RTOS may differ from the Arch Way or KISS principles.
 
 ## How do I get the X86_64 bootable ISO?
 
-The raw ISO is not distributed. It shouldn't be. The source is in the scripts and you can produce an up-to-date live system on-the-spot. You can replace packages on-the-fly without transfer of any packages or manual traversal operations. The source is the respositories specified in pacman's mirrorlist and the packages specified in syn-stage0.sh. You can read every line and see for yourself. The archiso project, as well as all the developers for all packages included take the credit, as SYN-RTOS on a fudermental level is a custom archiso profile with dotfiles pre-included in the installation media.
+The raw ISO is not distributed. It shouldn't be. The source is in the scripts and you can produce an up-to-date live system on-the-spot. You get to replace packages on-the-fly without transfer of any packages or manual traversal operations BEFORE BUILDING THE ISO! The source is the respositories specified in pacman's mirrorlist and the packages specified in syn-stage0.sh. You can read every line and see for yourself. The archiso project, as well as all the developers for all packages included take the credit, as SYN-RTOS on a fudermental level is a custom archiso profile with dotfiles pre-included in the installation media. This system aims to guide a proof-of-concept Arch Linux system that the user can generate derivatives of, and is itself a derivative.
+
+It's implied the you are already running on Arch Linux or know what you are doing.
 
 https://wiki.archlinux.org/title/archiso#Build_the_ISO
 
