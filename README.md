@@ -34,11 +34,22 @@ The command mkarchiso is used to build an Arch Linux live ISO image. The various
 
 The custom profile called SYN-RTOS will be used to build the live ISO image. The live ISO image built using this custom profile will have the properties and configuration defined in the SYN-RTOS profile. The purpose of building a custom profile is to create a live ISO image that is tailored to specific needs, such as running a specific application or providing a customized environment.
 
+The generated ISO image is highly flexible and can be used on a wide range of systems, including virtual machines, traditional PCs with MBR booting, UEFI-based systems, and Apple X86_64 computers. To create a bootable copy of the ISO image, you can utilize various imaging software tools such as dd, rufus, or any other equivalent software that can write an exact block of data to a storage medium, such as a DVD-ROM, flash storage device, or hard disk drive. The resulting image will be a read-only live environment that provides a minimal cow-space to store any data generated during the session.
+
+Once logged in you will need to ensure network connectivity, drive detection and sane modifications to the script below.
+
 ## syn-stage0.sh
 
 In this repository:           /SYN-RTOS/SYN-RTOS-ARCHISOFILES/airootfs/root/syn-stage0.sh
 
 In the booted enviroment:     /root/syn-stage0.sh
+
+It's advisable to at least read the script before running it. You can view and edit it using a text editor. From the live install enviroment 'nano' is a good tool to use:
+
+```
+nano syn-stage0.sh
+```
+When you have saved this file, ensure the mirrors can be reached and the correct disks are listed and execute.
 
 This is a script for setting up the system, with a focus on customization and documentation. The script provides a clear set of instructions for setting up and configuring the system, as well as a list of packages that can be installed. The packages are grouped into different categories, such as base packages, system utilities, control tools, window managers, command-line tools, graphical user interface tools, fonts, extra packages for command-line use, extra packages for graphical use, and extra packages for virtual machines. The script uses a single pacstrap command to install all the packages, allowing for an accurate prediction of total package size during installation. Users can add their own packages to the script by including them after the $SYNSTALL variable. The script begins by updating the mirror list and securing the keyring, then proceeds to install the specified packages to the resulting system. It is intended to be modified before executing the install inside the live enviroment.
 
