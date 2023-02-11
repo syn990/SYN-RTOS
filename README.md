@@ -32,7 +32,7 @@ The command mkarchiso is used to build an Arch Linux live ISO image. The various
 ```
 # mkarchiso -v -w /path/to/work_dir -o /path/to/out_dir /path/to/profile/
 ```
-> The mkarchiso command here has 4 options: -v for verbose mode, -w for working directory, -o for output directory, and the profile directory for which to build the live ISO image to.
+> The mkarchiso command here has 4 options: -v for verbose mode, -w for working directory, -o for output directory, and the profile directory for which to build the live ISO image to. 
 
 The custom profile called SYN-RTOS will be used to build the live ISO image. The live ISO image built using this custom profile will have the properties and configuration defined in the SYN-RTOS profile. The purpose of building a custom profile is to create a live ISO image that is tailored to specific needs, such as running a specific application or providing a customized environment.
 
