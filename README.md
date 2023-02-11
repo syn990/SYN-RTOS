@@ -20,12 +20,11 @@ The user interface of the system is designed to be both minimal and customizable
 The UI is designed to be lightweight, providing maximum pixel real estate for the user, and it is also highly extensible and replaceable. Rather than relying on a monolithic desktop environment, the system is built from a loose collection of software components that can be easily swapped out and customized as needed. This modular approach ensures that the system remains minimal in its footprint and provides maximum flexibility for the user. Overall, the UI intends to provide a consistent and aesthetically pleasing experience, while still allowing for customization and flexibility.
 
 # How do I get the ISO?
-
-Inside this reposity exists a directory called SYN-RTOS. This directory is a profile that can be interpreted by Archiso and will reproduce the ISO as defined by the profile. The intended nature of this design is to ensure a fresh live system build on the spot and with the profile being modifiable to what is useful / required / intended.
-
 ![Alt text](/Screenshots/ranger-looking-at-scripts.png?raw=true)
 
-This repository contains a directory named SYN-RTOS, which serves as a custom profile for Archiso. This profile is used to build a live ISO image that is tailored to specific requirements and configurations. The custom profile provides a convenient way to create a fresh live system with the desired properties and configurations, without the need for manual configuration each time. It is important to note that the SYN-RTOS profile only contributes to the creation of the live ISO image and does not affect the final installed operating system. Once the live ISO image is used to install the operating system, the custom profile has fulfilled its purpose and will not have any further influence on the installed system. Nevertheless, the SYN-RTOS profile can still be modified and re-used to create new live ISO images with different configurations as needed.
+This repository contains a directory named SYN-RTOS, which serves as a custom profile for Archiso. This profile is used to build a live ISO image that is tailored to specific requirements and configurations. The custom profile provides a convenient way to create a fresh live system with the desired properties and configurations, without the need for manual configuration each time.
+
+It is important to note that the SYN-RTOS profile only contributes to the creation of the live ISO image and does not affect the final installed operating system. Once the live ISO image is used to install the operating system, the custom profile has fulfilled its purpose and will not have any further influence on the installed system. Nevertheless, the SYN-RTOS profile can still be modified and re-used to create new live ISO images with different configurations as needed.
 
 The command mkarchiso is used to build an Arch Linux live ISO image. The various options passed to mkarchiso configure the build process and specify the output file.
 
